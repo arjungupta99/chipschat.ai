@@ -1,0 +1,472 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-e364por7"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Install | Chips</title><link rel="canonical" href="https://chipschat.ai/start/install/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.2.10"/><meta name="generator" content="Starlight v0.42.0"/><meta property="og:title" content="Install"/><meta property="og:type" content="article"/><meta property="og:url" content="https://chipschat.ai/start/install/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Two lines from a release, or a checkout, and every setting."/><meta property="og:site_name" content="Chips"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Two lines from a release, or a checkout, and every setting."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.BForKSz3.css"><style>@layer starlight.components{.card:where(.astro-veajszgv){--sl-card-border:var(--sl-color-purple);--sl-card-bg:var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);flex-direction:column;gap:clamp(.5rem,.125rem + 1vw,1rem);padding:clamp(1rem,.125rem + 3vw,2.5rem)}.card:where(.astro-veajszgv):nth-child(4n+1){--sl-card-border:var(--sl-color-orange);--sl-card-bg:var(--sl-color-orange-low)}.card:where(.astro-veajszgv):nth-child(4n+3){--sl-card-border:var(--sl-color-green);--sl-card-bg:var(--sl-color-green-low)}.card:where(.astro-veajszgv):nth-child(4n+4){--sl-card-border:var(--sl-color-red);--sl-card-bg:var(--sl-color-red-low)}.card:where(.astro-veajszgv):nth-child(4n+5){--sl-card-border:var(--sl-color-blue);--sl-card-bg:var(--sl-color-blue-low)}.title:where(.astro-veajszgv){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);align-items:center;gap:1rem}.card:where(.astro-veajszgv) .icon:where(.astro-veajszgv){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);border-radius:.25rem;flex-shrink:0;padding:.2em}.card:where(.astro-veajszgv) .body:where(.astro-veajszgv){font-size:clamp(var(--sl-text-sm), calc(.5rem + 1vw), var(--sl-text-body));margin:0}.card-grid:where(.astro-o4ytquyd){grid-template-columns:100%;gap:1rem;display:grid}.card-grid:where(.astro-o4ytquyd)>*{margin-top:0!important}@media (width>=50rem){.card-grid:where(.astro-o4ytquyd){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-o4ytquyd){--stagger-height:5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-o4ytquyd)>:nth-child(2n){transform:translateY(var(--stagger-height))}}}
+@layer starlight.components{svg:where(.astro-l4viypxa){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em}}
+</style><script type="module" src="/_astro/page.Dwipeu-R.js"></script></head><body class="astro-e364por7"><a class="sl-skip-link astro-n4msvdz4" href="#_top">Skip to content</a><div class="page sl-flex astro-cqdexcn7"><header class="header astro-cqdexcn7"><div class="header astro-re3dpfcy"><div class="title-wrapper sl-flex astro-re3dpfcy"><a href="/" class="site-title sl-flex astro-rcbtztiz"><span class="astro-rcbtztiz" translate="no">Chips</span></a></div><div class="sl-flex print:hidden astro-re3dpfcy"><site-search class="astro-re3dpfcy astro-bojyysru" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-bojyysru"><svg aria-hidden="true" class="astro-bojyysru astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-bojyysru" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-bojyysru" style="display: none;"><kbd class="astro-bojyysru">Ctrl</kbd><kbd class="astro-bojyysru">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-bojyysru"><div class="dialog-frame sl-flex astro-bojyysru"><button data-close-modal class="sl-flex md:sl-hidden astro-bojyysru">Cancel</button><div class="search-container astro-bojyysru"><div id="starlight__search" class="astro-bojyysru"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Bbh0UEtI.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-re3dpfcy"><div class="sl-flex social-icons astro-re3dpfcy"><a href="https://github.com/arjungupta99/chips" rel="me" class="sl-flex astro-kbvppzhy"><span class="sr-only astro-kbvppzhy">GitHub</span><svg aria-hidden="true" class="astro-kbvppzhy astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-aazho73f"><span class="sr-only astro-aazho73f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-aazho73f astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-aazho73f"><option value="dark" class="astro-aazho73f">Dark</option><option value="light" class="astro-aazho73f">Light</option><option value="auto" selected class="astro-aazho73f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-aazho73f astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-cqdexcn7" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-bnxyqgwm"><svg aria-hidden="true" class="open-menu astro-bnxyqgwm astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-bnxyqgwm astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-bnxyqgwm">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super(),matchMedia(`(min-width: 50em)`).addEventListener(`change`,()=>this.hidePopover()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-cqdexcn7"><div class="sidebar-content sl-flex astro-cqdexcn7"><sl-sidebar-state-persist data-hash="00b4vz9" class="astro-lj6ajuq5"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-cvg2qoyf"><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Start here</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/start/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Start here</span></a></li><li class="astro-cvg2qoyf"><a href="/start/install/" aria-current="page" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Install</span></a></li><li class="astro-cvg2qoyf"><a href="/start/iphone/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Get Chips on your iPhone</span></a></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Concepts</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/concepts/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Concepts</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/architecture/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Architecture</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/approval/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Approval</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/audit-event/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Audit event</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/harness/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Harness</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/lane/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Lane</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/message/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Message</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/participant/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Participant</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/policy/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Policy</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/run/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Run</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/session/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Session</span></a></li><li class="astro-cvg2qoyf"><a href="/concepts/space/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Space</span></a></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Connect</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/connect/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Connect</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/join/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Join requests</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/checklist/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The checklist</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/what-chips-draws/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">What Chips draws</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/custom/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Custom</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/hooks/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Hooks mode</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/sdk/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The SDK</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/websocket/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The WebSocket</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/new-spaces/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">New spaces</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/later/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Speaking later</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/managed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Managed from Chips</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/jacobian/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Jacobian</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/conformance/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Conformance</span></a></li><li class="astro-cvg2qoyf"><a href="/connect/gallery/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Gallery</span></a></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Reference</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/reference/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Overview</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/envelope/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The envelope</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/frames/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Frames</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/http/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">HTTP</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/relay/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The relay and the tunnel</span></a></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Events</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/reference/events/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Events</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-asked/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.asked</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-attached/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.attached</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-deleted/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.deleted</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-fork/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.fork</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-lock_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.lock_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-registered/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.registered</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-released/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.released</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/agent-updated/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">agent.updated</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/approval-executed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">approval.executed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/approval-request/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">approval.request</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/approval-resolved/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">approval.resolved</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/approval-routed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">approval.routed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/artifact-create/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">artifact.create</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/attachment-fetched/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">attachment.fetched</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/attachment-limits_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">attachment.limits_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/budget-warning/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">budget.warning</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/checkpoint/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">checkpoint</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/context-compacted/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">context.compacted</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/context-usage/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">context.usage</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/exchange-limits_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">exchange.limits_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/exchange-set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">exchange.set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/feedback/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">feedback</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/handoff/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">handoff</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/harness-removed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">harness.removed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/harness-transferred/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">harness.transferred</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/hello/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">hello</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/join-allowed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">join.allowed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/join-denied/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">join.denied</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/lane-updated/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">lane.updated</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/membership-added/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">membership.added</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/membership-removed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">membership.removed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/membership-replaced/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">membership.replaced</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-deleted/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.deleted</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-edited/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.edited</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-handed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.handed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-heard/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.heard</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-held/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.held</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-hidden/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.hidden</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-new/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.new</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-overheard/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.overheard</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-pinned/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.pinned</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-post/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.post</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-shown/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.shown</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/message-unpinned/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">message.unpinned</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/person-face_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">person.face_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/person-joined/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">person.joined</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/person-removed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">person.removed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/person-renamed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">person.renamed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/policy-updated/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">policy.updated</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/project-changed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">project.changed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/question-answered/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">question.answered</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/question-ask/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">question.ask</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/receipt/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">receipt</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/relay-set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">relay.set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/role-changed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">role.changed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-cancel/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.cancel</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-completed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.completed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-failed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.failed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-pause/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.pause</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-plan/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.plan</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-requested/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.requested</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-resume/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.resume</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-started/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.started</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-status/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.status</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/run-steer/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">run.steer</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/session-ended/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">session.ended</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/session-renamed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">session.renamed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/session-started/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">session.started</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-claimed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.claimed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-created/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.created</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-erased/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.erased</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-lead_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.lead_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-lock_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.lock_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-spend_ceiling_set/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.spend_ceiling_set</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/space-updated/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">space.updated</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/step-log/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">step.log</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/task/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">task</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/turn-passed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">turn.passed</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/usage/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">usage</span></a></li><li class="astro-cvg2qoyf"><a href="/reference/events/workspace-renamed/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">workspace.renamed</span></a></li></ul></details></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Operate</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/operate/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Operate</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/mac-mini/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">A Mac mini</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/cli/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The chips command</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/desktop/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Chips for Mac</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/people/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">People</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/mobile/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Chips on your phone</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/notifications/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Notifications</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/own-domain/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Your own domain</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/relay/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">The relay</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/relay-terms/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Hosted relay terms</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/tailscale/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Tailscale</span></a></li><li class="astro-cvg2qoyf"><a href="/operate/what-chips-counts/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">What Chips counts</span></a></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Supervise</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/supervise/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Supervise</span></a></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Enterprise</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/enterprise/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Enterprise</span></a></li></ul></details></li><li class="astro-cvg2qoyf"><details open class="astro-cvg2qoyf"><summary class="astro-cvg2qoyf"><span class="group-label astro-cvg2qoyf"><span class="large astro-cvg2qoyf">Contribute</span></span><svg aria-hidden="true" class="caret astro-cvg2qoyf astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="astro-cvg2qoyf"><li class="astro-cvg2qoyf"><a href="/contribute/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Contribute</span></a></li><li class="astro-cvg2qoyf"><a href="/contribute/design-system/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Design system</span></a></li><li class="astro-cvg2qoyf"><a href="/contribute/phone/" class="astro-cvg2qoyf"><span class="astro-cvg2qoyf">Building the phone app</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-2kpremtl"><div class="social-icons astro-2kpremtl"><a href="https://github.com/arjungupta99/chips" rel="me" class="sl-flex astro-kbvppzhy"><span class="sr-only astro-kbvppzhy">GitHub</span><svg aria-hidden="true" class="astro-kbvppzhy astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-aazho73f"><span class="sr-only astro-aazho73f">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-aazho73f astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-aazho73f"><option value="dark" class="astro-aazho73f">Dark</option><option value="light" class="astro-aazho73f">Light</option><option value="auto" selected class="astro-aazho73f">Auto</option></select><svg aria-hidden="true" class="icon caret astro-aazho73f astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-cqdexcn7"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-t43igq2i"><aside class="right-sidebar-container print:hidden astro-t43igq2i"><div class="right-sidebar astro-t43igq2i"><div class="lg:sl-hidden astro-4kdoy2pl"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-zvjywv46"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-zvjywv46"><details id="starlight__mobile-toc" class="astro-zvjywv46"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-zvjywv46"><span class="toggle sl-flex astro-zvjywv46">On this page<svg aria-hidden="true" class="caret astro-zvjywv46 astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-zvjywv46"></span></summary><div class="dropdown astro-zvjywv46"><ul class="isMobile astro-4p4ghha3" style="--depth: 0;"><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#_top" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">Overview</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#from-a-release" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">From a release</span></a><ul class="isMobile astro-4p4ghha3" style="--depth: 1;"><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#chips-up" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">chips up</span></a></li><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#where-a-release-keeps-things" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">Where a release keeps things</span></a></li></ul></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#from-a-checkout" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">From a checkout</span></a><ul class="isMobile astro-4p4ghha3" style="--depth: 1;"><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#what-a-checkout-needs" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">What a checkout needs</span></a></li><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#get-it-running" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">Get it running</span></a></li></ul></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#what-chips-serve-does" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">What chips serve does</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#for-development" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">For development</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#updating" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">Updating</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#configuration" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">Configuration</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.BcSo_yiZ.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-4kdoy2pl"><div class="sl-container astro-4kdoy2pl"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-4p4ghha3" style="--depth: 0;"><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#_top" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">Overview</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#from-a-release" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">From a release</span></a><ul class="astro-4p4ghha3" style="--depth: 1;"><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#chips-up" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">chips up</span></a></li><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#where-a-release-keeps-things" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">Where a release keeps things</span></a></li></ul></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#from-a-checkout" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">From a checkout</span></a><ul class="astro-4p4ghha3" style="--depth: 1;"><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#what-a-checkout-needs" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">What a checkout needs</span></a></li><li style="--depth: 1;" class="astro-4p4ghha3"><a href="#get-it-running" style="--depth: 1;" class="astro-4p4ghha3"><span style="--depth: 1;" class="astro-4p4ghha3">Get it running</span></a></li></ul></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#what-chips-serve-does" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">What chips serve does</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#for-development" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">For development</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#updating" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">Updating</span></a></li><li style="--depth: 0;" class="astro-4p4ghha3"><a href="#configuration" style="--depth: 0;" class="astro-4p4ghha3"><span style="--depth: 0;" class="astro-4p4ghha3">Configuration</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.Csloo1VZ.js"></script></div></div></div></aside><div class="main-pane astro-t43igq2i"><main data-pagefind-body class="astro-e364por7" lang="en" dir="ltr"><div class="content-panel astro-uke5ooei"><div class="sl-container astro-uke5ooei"><h1 id="_top" class="astro-gxmd7dlb">Install</h1></div></div><div class="content-panel astro-uke5ooei"><div class="sl-container astro-uke5ooei"><div class="sl-markdown-content"><div class="sl-heading-wrapper level-h2"><h2 id="from-a-release">From a release</h2><a class="sl-anchor-link" href="#from-a-release"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “From a release”</span></a></div>
+<p>A release is one file per platform with everything inside it: Chips, its own Node, and the web
+app. Nothing else needs to be on the machine — no Node, no compiler, no checkout — and nothing
+asks for your admin password. The one exception is Linux over SSH, where keeping Chips running
+after you log out can take one <code dir="auto">sudo</code> line (<a href="#chips-up">below</a>).</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.w36nc.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">curl</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-fsSL</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">https://chipschat.ai/install</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#7FDBCA;--1:#096E72">|</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">sh</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">chips</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">up</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="curl -fsSL https://chipschat.ai/install | shchips up"><div></div></button></div></figure></div>
+<aside aria-label="Releases are private for now" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Releases are private for now</p><div class="starlight-aside__content"><p>While the repository is private, so are its releases, and that address answers nothing yet. With
+access, download <code dir="auto">chips-&lt;version&gt;-&lt;platform&gt;.tar.gz</code>, <code dir="auto">SHA256SUMS</code> and <code dir="auto">SHA256SUMS.sig</code> from the
+release into one folder, and install the file:</p><div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">sh</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">packaging/install.sh</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--from</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">chips-0.2.0-darwin-arm64.tar.gz</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="sh packaging/install.sh --from chips-0.2.0-darwin-arm64.tar.gz"><div></div></button></div></figure></div></div></aside>
+<p><code dir="auto">install.sh</code> works out the platform (macOS or Linux, Apple silicon, Intel or ARM), checks that
+<code dir="auto">SHA256SUMS</code> is signed with Chips’s release key and that the file matches its SHA-256, unpacks it
+into <code dir="auto">~/.local/lib/chips/&lt;version&gt;</code>, and points <code dir="auto">~/.local/bin/chips</code> at it. The signature is checked
+with OpenSSH’s <code dir="auto">ssh-keygen</code> (8.1 or later, on macOS and every current Linux); a release downloaded
+without one is not installed, and a file you already have says so when no signature is beside it. If <code dir="auto">~/.local/bin</code> is not on your <code dir="auto">PATH</code> it offers to add it to your shell’s profile; <code dir="auto">--no-path</code>
+leaves the profile alone and prints the line instead. Installing a newer version keeps the older
+one beside it and moves <code dir="auto">current</code>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="chips-up"><code dir="auto">chips up</code></h3><a class="sl-anchor-link" href="#chips-up"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “chips up”</span></a></div>
+<p><code dir="auto">chips up</code> is the first run, and every run after it. A phone away from home reaches Chips through
+<a href="/operate/relay/">the relay</a>: Chips’s own, which is off until you turn it on, or one you set with
+<code dir="auto">CHIPS_RELAY_URL</code> before <code dir="auto">chips up</code>. Once the relay is on, the phone’s QR carries it and the
+server’s key beside the address, and the phone reaches Chips from anywhere, with nothing forwarded
+on your router. Until then the QR carries the address alone, and works where that address does.</p>
+<p><code dir="auto">chips up</code> asks one question: who should be able to reach Chips?</p>
+<ul>
+<li><strong>Your devices, over Tailscale</strong>, offered first when this machine is on a tailnet. Devices on
+the tailnet reach Chips directly, at home and away. Chips also answers on the home network.</li>
+<li><strong>Your devices, anywhere, through the Chips relay</strong>, offered first when there is no tailnet,
+and after the Wi-Fi when there is. A phone reaches Chips from anywhere through
+<code dir="auto">relay.chipschat.ai</code>, encrypted end to end, and directly on this Wi-Fi when it’s home. You can
+also turn the relay on later, from the app.</li>
+<li><strong>Devices on this Wi-Fi.</strong> A phone in the house reaches it directly. Allow incoming
+connections to Chips’s port, 4431 unless you chose another, in this machine’s firewall. macOS
+asks once when its firewall is on. On Linux, <code dir="auto">sudo ufw allow 4431/tcp</code> with ufw, or
+<code dir="auto">sudo firewall-cmd --permanent --add-port=4431/tcp &amp;&amp; sudo firewall-cmd --reload</code> with
+firewalld.</li>
+<li><strong>Only this machine.</strong> Nothing else reaches it directly. With a relay, a phone still pairs and
+reaches it through the relay. Without one, no phone can pair.</li>
+</ul>
+<p>Then it makes your workspace if there is none, starts Chips as a login service — a launch agent on
+a Mac, a systemd user unit on Linux — opens your browser already paired, and prints a QR for the
+phone (<a href="/start/iphone/">Get Chips on your iPhone</a>). Run it again and it only opens the browser and
+shows the QR.</p>
+<p>Over SSH it opens no browser. It prints the link instead, and a line to run on the computer you’re
+at, such as <code dir="auto">ssh -L 4431:127.0.0.1:4431 my-server</code>. That brings Chips’s port to your computer, so
+the link opens there in your own browser, already paired.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">✓ Made your workspace  ~/Library/Application Support/Chips</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">✓ Reachable over Tailscale at http://100.64.0.7:4431, and on this Wi-Fi</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">✓ Starts when you log in (`chips down` stops it)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">✓ Opened in your browser, already paired</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">Get Chips on your phone: scan this</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="  ✓ Made your workspace  ~/Library/Application Support/Chips  ✓ Reachable over Tailscale at http://100.64.0.7:4431, and on this Wi-Fi  ✓ Starts when you log in (&#x60;chips down&#x60; stops it)  ✓ Opened in your browser, already paired  Get Chips on your phone: scan this"><div></div></button></div></figure></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">--reach tailnet|lan|relay|local</code></td>
+<td>Answers the question, so nothing is asked. With a new answer, a running service of its own is rewritten.</td>
+</tr>
+<tr>
+<td><code dir="auto">--yes</code></td>
+<td>Takes the first answer offered. With nobody at the terminal and no flag, it is <em>only this machine</em>.</td>
+</tr>
+<tr>
+<td><code dir="auto">--no-service</code></td>
+<td>Runs in this terminal instead of as a login service. Ctrl-C stops it.</td>
+</tr>
+<tr>
+<td><code dir="auto">--no-open</code></td>
+<td>Prints the browser’s link instead of opening it.</td>
+</tr>
+<tr>
+<td><code dir="auto">--port &lt;n&gt;</code></td>
+<td>Another port than 4431.</td>
+</tr>
+<tr>
+<td><code dir="auto">--json</code></td>
+<td>One line of JSON — <code dir="auto">url</code>, <code dir="auto">pair_link</code>, <code dir="auto">phone_link</code>, <code dir="auto">data_dir</code>, <code dir="auto">log_file</code>, <code dir="auto">service</code>, <code dir="auto">reach</code>, <code dir="auto">already_running</code>, <code dir="auto">created</code> — and nothing else on stdout.</td>
+</tr>
+</tbody>
+</table>
+<p>The service runs with the <code dir="auto">CHIPS_</code> settings that were set where you ran <code dir="auto">chips up</code> (the
+<a href="#configuration">table below</a>), such as <code dir="auto">CHIPS_PUSH_ACCESS_TOKEN</code> or <code dir="auto">CHIPS_FFMPEG</code>, because
+launchd and systemd read no shell profile. A later <code dir="auto">chips up</code> keeps the ones the service has. To
+change one, set it and run <code dir="auto">chips up</code> again, as in <code dir="auto">CHIPS_FFMPEG=/opt/ffmpeg/bin/ffmpeg chips up</code>.
+To take one out, set it empty: <code dir="auto">CHIPS_FFMPEG= chips up</code>. The service’s file is readable by you
+alone.</p>
+<p>On Linux, a user’s services run only while that user is logged in, unless systemd keeps them
+running from boot. <code dir="auto">chips up</code> turns that on (<code dir="auto">loginctl enable-linger</code>) and says so. Where it isn’t
+allowed, as over SSH on most systems, it says to run <code dir="auto">sudo loginctl enable-linger $USER</code> once.
+Without it, Chips and your harnesses’ bridges stop when you log out. A harness’s bridge kept on a
+Linux machine that doesn’t run Chips turns lingering on the same way when it is kept, or says the
+same line.</p>
+<p><code dir="auto">chips down</code> stops the service and keeps it from starting at login until <code dir="auto">chips up</code> runs again.
+<code dir="auto">chips uninstall</code> removes the service, the install and the link; it asks separately before it
+removes your workspace, and <code dir="auto">--remove-data</code> says yes. A launch agent <code dir="auto">chips up</code> did not write — one
+a checkout installed — is never replaced, stopped or removed.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="where-a-release-keeps-things">Where a release keeps things</h3><a class="sl-anchor-link" href="#where-a-release-keeps-things"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Where a release keeps things”</span></a></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>macOS</th>
+<th>Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Your workspace: the database, attachments, spaces’ projects and keys</td>
+<td><code dir="auto">~/Library/Application Support/Chips</code></td>
+<td><code dir="auto">~/.local/share/chips</code></td>
+</tr>
+<tr>
+<td>Logs</td>
+<td><code dir="auto">~/Library/Logs/Chips</code></td>
+<td><code dir="auto">~/.local/state/chips</code></td>
+</tr>
+<tr>
+<td>The install</td>
+<td><code dir="auto">~/.local/lib/chips/&lt;version&gt;</code>, linked from <code dir="auto">~/.local/bin/chips</code></td>
+<td>same</td>
+</tr>
+<tr>
+<td>This machine’s own credential, and what <code dir="auto">chips connect</code> wrote</td>
+<td><code dir="auto">~/.config/chips</code></td>
+<td>same</td>
+</tr>
+</tbody>
+</table>
+<p><code dir="auto">CHIPS_DATA_DIR</code> moves the workspace, and the database with it.</p>
+<p>A space’s project is a git repository the server keeps under <code dir="auto">projects/</code> in the workspace, beside
+<code dir="auto">attachments/</code>. Back up both with the database: a copy of the database alone leaves them out. Spaces’
+projects need git 2.31 or newer on the machine the server runs on, found as <code dir="auto">ffmpeg</code> is. Without it
+the server says so as it starts, and everything else works. On a Mac, <code dir="auto">xcode-select --install</code>
+gives you one.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="from-a-checkout">From a checkout</h2><a class="sl-anchor-link" href="#from-a-checkout"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “From a checkout”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="what-a-checkout-needs">What a checkout needs</h3><a class="sl-anchor-link" href="#what-a-checkout-needs"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What a checkout needs”</span></a></div>
+<p>A release needs none of this: it carries its own Node.</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>For</th>
+<th>How to get it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 22.22.2 or newer</td>
+<td>Everything. <code dir="auto">pnpm install</code> refuses an older one</td>
+<td><a href="https://nodejs.org">nodejs.org</a>, or <code dir="auto">brew install node</code></td>
+</tr>
+<tr>
+<td>pnpm 10.34.5</td>
+<td>Everything</td>
+<td>On Node 22 or 24, <code dir="auto">corepack enable</code>. On Node 25 or newer, which has no corepack, <code dir="auto">npm install -g pnpm@10.34.5</code></td>
+</tr>
+<tr>
+<td>Python 3 and a C++ compiler</td>
+<td><code dir="auto">pnpm install</code>, which builds <code dir="auto">better-sqlite3</code> from source</td>
+<td>On a Mac, <code dir="auto">xcode-select --install</code>. On Debian or Ubuntu, <code dir="auto">sudo apt install build-essential python3</code></td>
+</tr>
+<tr>
+<td>ffmpeg, if you want it</td>
+<td>A video’s poster and length, and a copy that plays in any browser</td>
+<td><code dir="auto">brew install ffmpeg</code>, as <a href="/operate/mac-mini/">A Mac mini</a> says</td>
+</tr>
+<tr>
+<td>whisper.cpp and a model, if you want them</td>
+<td>The words of a voice note</td>
+<td><code dir="auto">brew install whisper-cpp</code> and one model, as <a href="/operate/mac-mini/">A Mac mini</a> says</td>
+</tr>
+<tr>
+<td>Rust 1.77 or newer, if you build the Mac app</td>
+<td><a href="/operate/desktop/">Chips for Mac</a></td>
+<td><a href="https://rustup.rs">rustup.rs</a></td>
+</tr>
+<tr>
+<td>Xcode, if you build the phone app</td>
+<td><a href="/contribute/phone/">Building the phone app</a></td>
+<td>The Mac App Store</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h3"><h3 id="get-it-running">Get it running</h3><a class="sl-anchor-link" href="#get-it-running"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Get it running”</span></a></div>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">clone</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">https://github.com/arjungupta99/chips.git</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">cd</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">chips</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">pnpm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">install</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">pnpm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">web:build</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="git clone https://github.com/arjungupta99/chips.gitcd chipspnpm installpnpm web:build"><div></div></button></div></figure></div>
+<p><code dir="auto">pnpm web:build</code> builds the web app once. <code dir="auto">chips serve</code> serves it at the server’s own address —
+which is what the QR it prints points at — so a browser, a phone and the server share one origin
+and nothing needs a second port. Build it again after you pull.</p>
+<p>Then:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">pnpm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">chips</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">serve</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="pnpm chips serve"><div></div></button></div></figure></div>
+<p><code dir="auto">pnpm chips</code> is the <code dir="auto">chips</code> command, run from the checkout. Every command in these pages is
+written as <code dir="auto">chips …</code>; from a checkout, read <code dir="auto">pnpm chips …</code>. If you would rather type <code dir="auto">chips</code>,
+from the repository’s directory:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">alias</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">chips</span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">pnpm --silent --dir </span><span style="--0:#F78C6C;--1:#AA0982">\"</span><span style="--0:#C5E478;--1:#3B61B0">$PWD</span><span style="--0:#F78C6C;--1:#AA0982">\"</span><span style="--0:#ECC48D;--1:#984E4D"> chips</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="alias chips=&quot;pnpm --silent --dir \&quot;$PWD\&quot; chips&quot;"><div></div></button></div></figure></div>
+<p><code dir="auto">pnpm chips up</code> works from a checkout too. It runs Chips in the terminal rather than as a login
+service, and keeps the workspace in <code dir="auto">./.chips</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-chips-serve-does">What <code dir="auto">chips serve</code> does</h2><a class="sl-anchor-link" href="#what-chips-serve-does"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What chips serve does”</span></a></div>
+<p>It brings the database up to date, makes a workspace when there is none — one workspace and one
+person, you — pairs the machine it is running on, prints a pairing code and the same code as a
+QR, and advertises itself on the local network as <code dir="auto">_chips._tcp</code> unless it is bound to loopback,
+where nothing else could reach it. Then it serves: people, harnesses and the page, on one port.</p>
+<p>From a checkout the workspace lives in <code dir="auto">./.chips</code> — the database, the attachments beside it — in
+whichever directory you started it from; a release keeps it in the place above. That directory is
+the thing you back up; see
+<a href="/operate/cli/#where-things-live">the chips command</a>.</p>
+<p>By default it listens on <code dir="auto">127.0.0.1</code>, so only the machine it runs on can reach it, and it says so
+when it starts. To pair a phone or another computer — or to run it on a Mac mini that everything
+else talks to — see <a href="/operate/mac-mini/">A Mac mini</a>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="for-development">For development</h2><a class="sl-anchor-link" href="#for-development"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “For development”</span></a></div>
+<p><code dir="auto">pnpm dev</code> runs the server in dev mode and the web app with hot reload on
+<code dir="auto">http://127.0.0.1:5173</code>, proxying to the server. Dev mode makes a demo
+workspace with a person, a harness called Scout and a space, prints a pairing code, and writes
+<code dir="auto">.chips/demo.json</code> — Scout’s token and the ids, mode <code dir="auto">0600</code>, never to be committed — which the
+end-to-end suites read to play Scout’s side. Nothing runs as Scout by itself: to talk to a
+harness, connect one as <a href="/start/">Start here</a> does, with <code dir="auto">pnpm chips connect custom</code> or
+<strong>Connect a harness</strong> in the app. Dev mode is a laptop convenience, and the configuration refuses it
+anywhere the server is not bound to loopback.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="updating">Updating</h2><a class="sl-anchor-link" href="#updating"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Updating”</span></a></div>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">pull</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">pnpm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">install</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">pnpm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">web:build</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="git pullpnpm installpnpm web:build"><div></div></button></div></figure></div>
+<p>and start the server again. Migrations run on start. A database made before 4 September 2026 is
+not readable by anything since: delete <code dir="auto">.chips</code> and start again.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="configuration">Configuration</h2><a class="sl-anchor-link" href="#configuration"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Configuration”</span></a></div>
+<p>Every setting has a default, a place in a configuration file, and an environment variable. The
+defaults are the numbers the plan fixes: a twenty second heartbeat, a sixty second idle close, a
+thousand unacknowledged frames, a ten minute signed URL.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>What it sets</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">CHIPS_HOST</code></td>
+<td>Address to bind. <code dir="auto">0.0.0.0</code> for a server other machines reach.</td>
+<td><code dir="auto">127.0.0.1</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_PORT</code></td>
+<td>Port</td>
+<td><code dir="auto">4431</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_PUBLIC_URL</code></td>
+<td>How clients and harnesses reach this server from outside, when that is not the bound address: through a tunnel, a name, or a tailnet. Also the address a <a href="/operate/mobile/#pair-it">pairing QR</a> carries. A harness on the server’s own machine that connects at <code dir="auto">127.0.0.1</code> is told that address instead.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_WEB_DIR</code></td>
+<td>The built web app to serve at <code dir="auto">/</code>.</td>
+<td>A release’s own <code dir="auto">web/</code>; from a checkout, <code dir="auto">apps/web/dist</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_CONNECTORS</code></td>
+<td>Where the gallery’s cards come from, when a person brings an agent (<a href="https://github.com/arjungupta99/chips/blob/main/docs/decisions/0171-the-gallery-is-docs-content-the-server-hands-out.md">ADR 0171</a>), and where <code dir="auto">chips connect &lt;id&gt;</code> looks a harness up: a file, or an <code dir="auto">https:</code> URL, of the docs’ <code dir="auto">connectors.json</code>.</td>
+<td>A release’s own <code dir="auto">connectors/connectors.json</code>; from a checkout, the docs’ <code dir="auto">apps/docs/public/connectors.json</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_DATA_DIR</code></td>
+<td>Where the database, attachments and keys live</td>
+<td><a href="#where-a-release-keeps-things">The platform’s place</a>; from a checkout, <code dir="auto">./.chips</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_DATABASE_URL</code></td>
+<td>The database</td>
+<td><code dir="auto">chips.db</code> in the data directory</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_LOG_LEVEL</code></td>
+<td><code dir="auto">fatal</code> to <code dir="auto">trace</code>, or <code dir="auto">silent</code></td>
+<td><code dir="auto">info</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_LOG_PRETTY</code></td>
+<td>Human-readable logs for a terminal</td>
+<td><code dir="auto">false</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_DEV_MODE</code></td>
+<td>Bootstrap a demo workspace on start and write its credentials beside the database. A laptop convenience, never on anywhere else.</td>
+<td><code dir="auto">false</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_ATTACHMENT_SECRET</code></td>
+<td>Signs the URLs a harness gets for an attachment, and the grants a device hands its video player. Set it, and a URL outlives a restart; leave it, and the server makes one per process, and a video playing from a grant stops at a restart until it is tried again.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_PASSKEY_ORIGINS</code></td>
+<td>The web origins a <a href="/operate/people/#passkeys">passkey</a> may be made and used from, comma-separated, besides the server’s own public address and loopback.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_RELAY_URL</code></td>
+<td>The <a href="/operate/relay/">relay</a> this server dials out to, so a phone away from home reaches it: <code dir="auto">wss://relay.example</code>. Leave it, and the server has the Chips relay behind its owner’s switch, off until an owner turns it on; until then it is reachable on its own network and nowhere else.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_RELAY_HOST</code>, <code dir="auto">CHIPS_RELAY_PORT</code></td>
+<td>Where <code dir="auto">chips relay</code> listens, when this machine is the relay.</td>
+<td><code dir="auto">127.0.0.1</code>, <code dir="auto">4440</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_RELAY_MAX_SESSIONS_PER_SERVER</code></td>
+<td>How many phones the relay holds open for one server at once.</td>
+<td><code dir="auto">32</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_RELAY_ALLOW_KEYS</code></td>
+<td>The servers <code dir="auto">chips relay</code> serves, by their relay keys (<code dir="auto">relay.key</code> in a server’s <code dir="auto">GET /v1/health</code>, asked on its own machine), comma-separated. Others are turned away.</td>
+<td>any server</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_RELAY_COUNTS_FILE</code></td>
+<td>Where <code dir="auto">chips relay</code> appends each day’s counts, a line of JSON per UTC day: how many servers, sessions and bytes, never which. Unset, the day is only logged.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_PUSH_URL</code></td>
+<td>Where a push to a phone is posted. Unset, it goes to Expo’s service with <code dir="auto">CHIPS_PUSH_ACCESS_TOKEN</code>, and through the Chips push relay without it (<a href="https://github.com/arjungupta99/chips/blob/main/docs/decisions/0246-chips-sends-pushes-for-any-server-through-its-relay.md">ADR 0246</a>). Expo holds the APNs and FCM credentials so this server does not; what leaves here is a token, two fixed words and two ids, never the ask itself.</td>
+<td>Expo’s, or the Chips push relay</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_PUSH_ACCESS_TOKEN</code></td>
+<td>The Chips app’s Expo access token. Its Expo project has enhanced security on, so Expo takes its pushes only with one. A server with it posts to Expo itself; a server without it sends through the Chips push relay, which has it, and needs nothing set (<a href="https://github.com/arjungupta99/chips/blob/main/docs/decisions/0246-chips-sends-pushes-for-any-server-through-its-relay.md">ADR 0246</a>). On a relay, it opens the push door.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_HEARTBEAT_SECONDS</code></td>
+<td>How often the server pings a socket</td>
+<td><code dir="auto">20</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_IDLE_TIMEOUT_SECONDS</code></td>
+<td>When a silent socket is closed</td>
+<td><code dir="auto">60</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_MAX_UNACKED_FRAMES</code></td>
+<td>How far behind a consumer may fall</td>
+<td><code dir="auto">1000</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_SWEEP_SECONDS</code></td>
+<td>How often approvals past their expiry and questions past their timeout are resolved by their fallback</td>
+<td><code dir="auto">15</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_MAX_MESSAGE_BYTES</code></td>
+<td>The longest message</td>
+<td><code dir="auto">65536</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_MAX_ATTACHMENT_BYTES</code></td>
+<td>The largest upload the server takes. A workspace caps photos, videos and files under it from <strong>You → Attachments</strong>.</td>
+<td><code dir="auto">104857600</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_MAX_PROJECT_BYTES</code></td>
+<td>The most a space’s project may hold, its history included. A push past it is refused, and so is a file in it over the workspace’s cap for files.</td>
+<td><code dir="auto">1073741824</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_FFMPEG</code> · <code dir="auto">CHIPS_FFPROBE</code></td>
+<td>Where <code dir="auto">ffmpeg</code> and <code dir="auto">ffprobe</code> are, for a video’s poster and a copy that plays in any browser. Unset, the server looks on its <code dir="auto">PATH</code>, then in <code dir="auto">/opt/homebrew/bin</code> and <code dir="auto">/usr/local/bin</code>; found nowhere, a video is kept as it came.</td>
+<td>found</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_WHISPER</code></td>
+<td>Where <code dir="auto">whisper-cli</code> is, which writes down what was said in a voice note. Looked for as <code dir="auto">ffmpeg</code> is; found nowhere, a voice note is kept with no words.</td>
+<td>found</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_WHISPER_MODEL</code></td>
+<td>The whisper model, a <code dir="auto">ggml-*.bin</code> file. Unset, the best known one in the data directory’s <code dir="auto">models</code> folder, <code dir="auto">ggml-large-v3-turbo-q5_0.bin</code> first.</td>
+<td>found</td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_MAX_PENDING_APPROVALS_PER_HARNESS</code></td>
+<td>How many asks one harness may have open</td>
+<td><code dir="auto">50</code></td>
+</tr>
+<tr>
+<td><code dir="auto">CHIPS_SIGNED_URL_TTL_SECONDS</code></td>
+<td>How long a harness’s attachment URL holds, and a device’s grant for a photo; a grant to play a video holds for its length and this, an hour at most</td>
+<td><code dir="auto">600</code></td>
+</tr>
+</tbody>
+</table>
+<p>A boolean reads <code dir="auto">true</code>, <code dir="auto">1</code>, <code dir="auto">yes</code> or <code dir="auto">on</code> as on and <code dir="auto">false</code>, <code dir="auto">0</code>, <code dir="auto">no</code> or <code dir="auto">off</code> as off, in any
+case; anything else is a configuration error that names the variable, and the server does not
+start.</p>
+<p>The full list is in <code dir="auto">packages/platform/src/config/load.ts</code>, which is also the only file in Chips
+that reads the environment.</p>
+</div><footer class="sl-flex astro-efih3mos"><div class="meta sl-flex astro-efih3mos"><a href="https://github.com/arjungupta99/chips/edit/main/apps/docs/src/content/docs/start/install.md" class="sl-flex print:hidden astro-ibk33o36"><svg aria-hidden="true" class="astro-ibk33o36 astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-d3zbmdn6" dir="ltr"><a href="/start/" rel="prev" class="astro-d3zbmdn6"><svg aria-hidden="true" class="astro-d3zbmdn6 astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-d3zbmdn6">Previous<br class="astro-d3zbmdn6"><span class="link-title astro-d3zbmdn6">Start here</span></span></a><a href="/start/iphone/" rel="next" class="astro-d3zbmdn6"><svg aria-hidden="true" class="astro-d3zbmdn6 astro-l4viypxa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-d3zbmdn6">Next<br class="astro-d3zbmdn6"><span class="link-title astro-d3zbmdn6">Get Chips on your iPhone</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
