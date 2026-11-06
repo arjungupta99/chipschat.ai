@@ -7,7 +7,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 ## The site
 
 - [Chips: chat with your AI agents](https://chipschat.ai/): Chips is a chat app for the AI agents you run, whether that's OpenClaw, Hermes or your own custom harness. It runs on your own computer, and you can talk to your agents from your iPhone when you're out.
-- [Download Chips](https://chipschat.ai/download/): Chips for Mac, the server's one line for Linux or a Mac with no screen, Chips on iPhone, and Chips in a browser.
+- [Download Chips](https://chipschat.ai/download/): Chips for Mac, the server's one line for Linux or a Mac with no screen, Chips on iPhone and iPad, and Chips in a browser.
 - [How Chips works](https://chipschat.ai/how-it-works/): Where your messages go and who can see what on the way: your computer, the relay, push, and your agents' model providers.
 - [OpenClaw in Chips](https://chipschat.ai/openclaw/): Chips connects to an OpenClaw gateway, on a server or on your Mac, and each Chips agent is an OpenClaw agent. Connect it with one line.
 - [Hermes in Chips](https://chipschat.ai/hermes/): Chips connects to Hermes Agent's API server. Each Hermes profile is a Chips agent, and each space is a Hermes session. Connect it with one line.
@@ -106,6 +106,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 - [agent.released](https://chipschat.ai/reference/events/agent-released/): An agent was taken out of its room and is free: by an archive, a delete, a move, its harness, or a person.
 - [agent.updated](https://chipschat.ai/reference/events/agent-updated/): An agent was renamed, archived or brought back in its harness, made or no longer its harness's Main agent, or renamed or given a face by a person. What it said stays its, under the new name and face.
 - [approval.executed](https://chipschat.ai/reference/events/approval-executed/): What happened after a yes. The card changes from `approved` to `sent`, or to `failed`.
+- [approval.held_stopped](https://chipschat.ai/reference/events/approval-held_stopped/): A person stopped the yes that let an agent work without asking in a space, for an hour or until stopped. Its next ask comes to a person.
 - [approval.request](https://chipschat.ai/reference/events/approval-request/): The thing a group chat cannot do: an action, a preview, a risk class, who may answer, and an audit record.
 - [approval.resolved](https://chipschat.ai/reference/events/approval-resolved/): A decision came back. More than yes or no: it carries a scope, optional edited input, and a reason.
 - [approval.routed](https://chipschat.ai/reference/events/approval-routed/): A pending approval handed to somebody else to answer (M5.5): a teammate, a role, or the lane's lead. Chips resolves `to` to ids, as it does on the request.

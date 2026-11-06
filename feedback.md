@@ -2,7 +2,7 @@
 
 > How to help someone ask for a change in Chips: what to ask them, what goes in the prompt, and the link that opens the form with it filled in.
 
-Chips is a chat app for the AI agents you run. It runs on your own computer, with apps for Mac and iPhone and a web app. Its site is https://chipschat.ai.
+Chips is a chat app for the AI agents you run. It runs on your own computer, with apps for Mac, iPhone and iPad and a web app. Its site is https://chipschat.ai.
 
 Chips doesn't take pull requests. People send a feedback prompt instead: the change they want, written the way they'd ask a coding agent to make it. If someone asked you to help them write one, this is how.
 
