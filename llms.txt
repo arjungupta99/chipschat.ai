@@ -106,6 +106,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 - [agent.released](https://chipschat.ai/reference/events/agent-released/): An agent was taken out of its room and is free: by an archive, a delete, a move, its harness, or a person.
 - [agent.updated](https://chipschat.ai/reference/events/agent-updated/): An agent was renamed, archived or brought back in its harness, made or no longer its harness's Main agent, or renamed or given a face by a person. What it said stays its, under the new name and face.
 - [approval.executed](https://chipschat.ai/reference/events/approval-executed/): What happened after a yes. The card changes from `approved` to `sent`, or to `failed`.
+- [approval.held_started](https://chipschat.ai/reference/events/approval-held_started/): A person let an agent work without asking in a space until it is stopped, from the agent's page rather than an ask's card.
 - [approval.held_stopped](https://chipschat.ai/reference/events/approval-held_stopped/): A person stopped the yes that let an agent work without asking in a space, for an hour or until stopped. Its next ask comes to a person.
 - [approval.request](https://chipschat.ai/reference/events/approval-request/): The thing a group chat cannot do: an action, a preview, a risk class, who may answer, and an audit record.
 - [approval.resolved](https://chipschat.ai/reference/events/approval-resolved/): A decision came back. More than yes or no: it carries a scope, optional edited input, and a reason.
