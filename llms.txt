@@ -174,6 +174,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 - [space.erased](https://chipschat.ai/reference/events/space-erased/): A space was erased from the server by a person: what was said in it, its files and its search entries are gone for everyone. Only this line stays, naming which and by whom.
 - [space.lead_set](https://chipschat.ai/reference/events/space-lead_set/): A room's lead was chosen, or taken away.
 - [space.lock_set](https://chipschat.ai/reference/events/space-lock_set/): A room's changes were locked, or let go: while locked, no person renames, archives or deletes it.
+- [space.spend_ceiling_lifted](https://chipschat.ai/reference/events/space-spend_ceiling_lifted/): A room's cap on what a job may spend was taken off: No cap.
 - [space.spend_ceiling_set](https://chipschat.ai/reference/events/space-spend_ceiling_set/): What a room allows a job to spend was set, or set back to the default.
 - [space.updated](https://chipschat.ai/reference/events/space-updated/): A space was retitled, closed or reopened — by a person in it, or by the harness that opened it — or made a harness's home. The apps call closing a space archiving it.
 - [step.log](https://chipschat.ai/reference/events/step-log/): One tool call or reasoning step, for the receipt and the run timeline.
