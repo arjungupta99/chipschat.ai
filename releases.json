@@ -1,0 +1,57 @@
+{
+  "releases": [
+    {
+      "version": "1.2.4",
+      "date": "2026-11-11",
+      "line": "Pause and Stop moved into an agent's bubble, work nobody picked up is passed on, and Spend per job got No cap.",
+      "dot": true
+    },
+    {
+      "version": "1.2.3",
+      "date": "2026-11-10",
+      "line": "A page of your space's project says whether its program is running, and asks before a link that needs it."
+    },
+    {
+      "version": "1.2.2",
+      "date": "2026-11-09",
+      "line": "The QR code for your phone opens in the iPhone's Camera, and setting up has fewer rough edges."
+    },
+    {
+      "version": "1.2.1",
+      "date": "2026-11-09",
+      "line": "Chips finds the agents already on your Mac, and says who makes each one."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-11-09",
+      "line": "You can answer an agent from one screen and say how long a yes lasts, and the Mac and the web have the iPad's columns.",
+      "dot": true
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-11-04",
+      "line": "The iPad was redesigned, and the Mac and the web were laid out the way the iPad is.",
+      "dot": true
+    },
+    {
+      "version": "1.0.3",
+      "date": "2026-11-04",
+      "line": "Fixes from a review of Chips by somebody installing it with no help."
+    },
+    {
+      "version": "1.0.2",
+      "date": "2026-11-03",
+      "line": "An HTML file of a space's project has Open page at its top, above its source."
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-11-02",
+      "line": "A phone locked while it was connecting connects again, and a link opens Chips when it wasn't running."
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-11-01",
+      "line": "Chips came out, with the Mac app, the iPhone app, the browser, and the install line for a Mac or Linux."
+    }
+  ]
+}
