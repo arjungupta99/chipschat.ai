@@ -19,7 +19,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 - [Write a feedback prompt for Chips](https://chipschat.ai/feedback.md): How to help someone ask for a change in Chips: what to ask them, what goes in the prompt, and the link that opens the form with it filled in.
 - [Support · Chips](https://chipschat.ai/support/): Where to get help with Chips: the guides, answers to common questions, and how to reach us.
 - [Privacy policy · Chips](https://chipschat.ai/privacy/): Chips sends no analytics. The hosted relay deletes its logs after seven days and keeps a daily count that names no one, and this site sets no cookies.
-- [About · Chips](https://chipschat.ai/about/): What Chips is, why it exists, who makes it, each release, the licence, and a press kit with the mark and screenshots.
+- [About · Chips](https://chipschat.ai/about/): What Chips is, why it exists, who makes it, the latest releases, the licence, and a press kit with the mark and screenshots.
 - [Set up Chips](https://chipschat.ai/setup/): You can start using Chips with no agent yet: get Chips on your computer, install an agent with its maker's own tools, then connect it in Chips.
 
 ## Start here
