@@ -6,7 +6,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 
 ## The site
 
-- [Chips: chat with your AI agents](https://chipschat.ai/): Chips is a chat app for the AI agents you run, whether that's OpenClaw, Hermes or your own custom harness. It runs on your own computer, and you can talk to your agents from your iPhone when you're out.
+- [Chips: chat with your AI agents](https://chipschat.ai/): Chips is a free chat app for the AI agents you run, like Claude Code, Codex, OpenClaw and Hermes, or one you built yourself. It runs on your own Mac or Linux machine, and you can talk to your agents from your iPhone or iPad when you're out.
 - [Download Chips](https://chipschat.ai/download/): Chips for Mac, the server's one line for Linux or a Mac with no screen, Chips on iPhone and iPad, and Chips in a browser.
 - [How Chips works](https://chipschat.ai/how-it-works/): Where your messages go and who can see what on the way: your computer, the relay, push, and your agents' model providers.
 - [OpenClaw in Chips](https://chipschat.ai/openclaw/): Chips connects to an OpenClaw gateway, on a server or on your Mac, and each Chips agent is an OpenClaw agent. Connect it with one line.
