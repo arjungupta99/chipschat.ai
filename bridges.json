@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "signed": "2026-11-14T09:34:55.180Z",
+  "signed": "2026-11-14T22:50:45.779Z",
   "packages": {
     "@chipschat/openclaw": {
       "releases": [
@@ -210,6 +210,11 @@
     "@chipschat/hermes": {
       "releases": [
         {
+          "version": "1.0.32",
+          "integrity": "sha512-lW6A7z7UNon25L7KhBybuSYYeEAlk4i7CcWSbqEauhFhtSdMVf/WoT379NkF5N94n/0t4x2U1JxQSI0XZqkldg==",
+          "published": "2026-11-14T18:31:13.390Z"
+        },
+        {
           "version": "1.0.31",
           "integrity": "sha512-nlfvMzHLCxvq0P3wi2MVqYzqyYaolgBd058Rv2R8YYwL/11Kk7NsRgeGDX82OGqOfOcIhtaNecKak4TAJNZPDg==",
           "published": "2026-11-14T09:32:20.932Z"
@@ -303,17 +308,17 @@
           "version": "1.0.13",
           "integrity": "sha512-fD1e2AW3BXe+Z+7kRI3uBBU7Ll74wBzT/E825Km3uBNcn6MHMWxdj3IgyrB/Xxn4CZokLJSFQaTLBVt0OFjcGA==",
           "published": "2026-11-01T09:29:33.495Z"
-        },
-        {
-          "version": "1.0.12",
-          "integrity": "sha512-0AZ9PK0HHT+gvRLHKO7cRwVPdeRclXhy1vBSc5NpMJpvwFi41bSBUT2RE8AO28O1QPUU+hlQaK8IRCXvbD2adQ==",
-          "published": "2026-11-01T08:40:38.794Z"
         }
       ],
       "withdrawn": []
     },
     "@chipschat/opencode": {
       "releases": [
+        {
+          "version": "1.0.30",
+          "integrity": "sha512-U94HV9ZDFmOQ1qWV+eqN9NoAUKqFfbB45Hx1BRW+HNRezCFMkLWrmZgW6s7W0P+vDW0l0nozg3L5iJZNWpEn9A==",
+          "published": "2026-11-14T18:28:56.159Z"
+        },
         {
           "version": "1.0.29",
           "integrity": "sha512-iSxIpHupYAJR2fUjbmdKkkVP7xZRVsKkKqOWNNHdbUdzOFDY0oQbCUHNOob8y+ROXCpkLuXUqcdmBYsbvIEToA==",
@@ -408,11 +413,6 @@
           "version": "1.0.11",
           "integrity": "sha512-mHwr5q3baAnbI479Q0VRIQUuOQ7xMMXrWi7KksrWe79BP/5EvIeZYD/HnmJXnW8fuXWzIApqWhc2/FvYYg4QAQ==",
           "published": "2026-11-01T09:31:12.757Z"
-        },
-        {
-          "version": "1.0.10",
-          "integrity": "sha512-fxeO1gTVxTrfZC5Yx845ZyFz1U/uzQZ9fRGGo+cV/SOav4E1YC9aQ592eTQD9N8o6peh0Qzm4uj1uZUynpwtvw==",
-          "published": "2026-11-01T08:36:23.068Z"
         }
       ],
       "withdrawn": []
