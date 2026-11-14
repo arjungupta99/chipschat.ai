@@ -1,5 +1,6 @@
 {
   "format": 1,
+  "signed": "2026-11-14T02:31:16.121Z",
   "packages": {
     "@chipschat/openclaw": {
       "releases": [
