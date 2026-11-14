@@ -1,9 +1,19 @@
 {
   "format": 1,
-  "signed": "2026-11-14T04:41:48.579Z",
+  "signed": "2026-11-14T08:06:48.045Z",
   "packages": {
     "@chipschat/openclaw": {
       "releases": [
+        {
+          "version": "1.0.17",
+          "integrity": "sha512-OmZt/a6yhyQiWuTYRxrd2cGmoTfzZeLtbqjgzq+Rw2qismbl8QHEJNaryJfQCUhm8sp1CwpGIecCACioRzU87g==",
+          "published": "2026-11-14T07:58:39.172Z"
+        },
+        {
+          "version": "1.0.16",
+          "integrity": "sha512-YpEwcqvYeL3DcFK9OoIg3K5W77AgwYee+9w/7+OTJHBj4Evnvi4233H329ZmT2lMXiTrhBu8MULcrXLA72a3oQ==",
+          "published": "2026-11-14T06:59:30.427Z"
+        },
         {
           "version": "1.0.15",
           "integrity": "sha512-9kf6ZAGI2QRL6UDS9/QXvzc6ah2Pv7vtaSmohX3EtrqkfiI7QcZICzri6MdGWuLx1Fv7k9eOVSgJ+RBziqCR0g==",
@@ -89,6 +99,16 @@
     },
     "@chipschat/acp": {
       "releases": [
+        {
+          "version": "1.0.27",
+          "integrity": "sha512-+6DIZXUgwlGiwwzd1Spu4pBs8pmUhQsGJwZzUX/8i+JHcA1wx42rFZfxurw8XUv9oMiXuOYGsq2LuXV7CHA6gQ==",
+          "published": "2026-11-14T07:56:53.696Z"
+        },
+        {
+          "version": "1.0.26",
+          "integrity": "sha512-pP4CfwxMrWWJQXyu/UHQtzlEm5YBAeEhhoFb14I8uArJkN84BzwhpClmvGF8Oy77fqnZPouYbTtoy65MYUeNsQ==",
+          "published": "2026-11-14T06:59:12.796Z"
+        },
         {
           "version": "1.0.25",
           "integrity": "sha512-SrPYOejvCfZdSi9Z0dmOCtNUkqT1m4X5Kg7MKhapq9V7uIIZOUUNTpbZmST2vkr9eReWK+UehfB8f3b9qrRNBw==",
@@ -178,22 +198,22 @@
           "version": "1.0.8",
           "integrity": "sha512-ja+VwHOU2q2PXOS4pDsauw08ozYGZuseVQOB48o05FG0lAMXzQ/Xy3P0KWzm/ETd2p+lGygvdZgqPxbwdQ/fTg==",
           "published": "2026-10-31T01:26:45.683Z"
-        },
-        {
-          "version": "1.0.6",
-          "integrity": "sha512-l/VP7w13bOAh/dfXyF55I2BygMdQ/+5pH21TMB75z8Q2iEpEI0+2tnTR+7cYAVmGnwYoA/+OgsFfXljCn2bz6Q==",
-          "published": "2026-10-29T00:30:58.201Z"
-        },
-        {
-          "version": "1.0.4",
-          "integrity": "sha512-9w3L0V4CqHjroidMqZK7bZhlNEHKbgShn1zNEHykXnZzq0NaRe0qiKkCYVz8YggG+U8FpChc6UeazYgvW3DypA==",
-          "published": "2026-10-28T05:09:09.320Z"
         }
       ],
       "withdrawn": []
     },
     "@chipschat/hermes": {
       "releases": [
+        {
+          "version": "1.0.30",
+          "integrity": "sha512-ShAkf03Kjau+UyMM6xJN1XCI9JJYhbOntKp4hfHjdV4D2TExLA7xzhH8+/j3h4653dib1j9F7KKmzOd2NsT4Lg==",
+          "published": "2026-11-14T07:58:25.412Z"
+        },
+        {
+          "version": "1.0.29",
+          "integrity": "sha512-aXaeF2GLtTgnGmRn78m1lNTMyKHIZtdc+ii7mnGjThcou3+A1ZsSr4IDLKxV0rCQLmAerzVxQ/zUcVlwOyn72g==",
+          "published": "2026-11-14T07:01:24.680Z"
+        },
         {
           "version": "1.0.28",
           "integrity": "sha512-k42Cq2mkv8vxfAB9Lipp8WYjlsi9IepsqYK2o4M4C3/xDYvUEbrWk31j4N2SiTR6dKQExd+Y0iCx/NVTXE9kag==",
@@ -283,22 +303,22 @@
           "version": "1.0.11",
           "integrity": "sha512-HXufYHAZq2/HoQ2hIESyXQD+deJLnQpTuBkur7QmcP8vL3AeDCBQ8gNqSBlnayfqVIwAa7gJZUD0qKXQs569XQ==",
           "published": "2026-10-31T02:33:39.545Z"
-        },
-        {
-          "version": "1.0.10",
-          "integrity": "sha512-0dKr9EamZuBiJDac1DjtpBwIyMHx8A0DEEsHC/D/LaGNPA8zaW7qj9BKe0b8QELg5oVEzG7+zCGSEyBZsRdq+w==",
-          "published": "2026-10-31T01:26:19.490Z"
-        },
-        {
-          "version": "1.0.8",
-          "integrity": "sha512-/1AdVPSgEoMzwvcSLDcGGohDysAreBwkoLHaoIU1LU5Fu9Cu5INVEuYgWY/r1QGYPuiorMaXSImvWxYxEQkkqg==",
-          "published": "2026-10-29T00:30:11.844Z"
         }
       ],
       "withdrawn": []
     },
     "@chipschat/opencode": {
       "releases": [
+        {
+          "version": "1.0.28",
+          "integrity": "sha512-do2ambsyQZZc2FPJZBD2AOlrDPD7DZgC5qozQDddycP7FEYz6UUi+ZKA8qQnAsjPmwYCZweJEJI4qhc31l6vgQ==",
+          "published": "2026-11-14T07:56:16.829Z"
+        },
+        {
+          "version": "1.0.27",
+          "integrity": "sha512-0DpgEoSEmaia/RFAKC4Ud6N1YxkejPjPKzzEoAVuOd/1gyHwXvNGZDigZcuZgGJCx/4Rq3DfBHxlfmoiTl06hw==",
+          "published": "2026-11-14T07:00:00.037Z"
+        },
         {
           "version": "1.0.26",
           "integrity": "sha512-51hMu5FCjVm36HsFTBTV4uLW7jVNRX+FOlyYVAS9G4dYvK9TjqBgLqrBqmfKKodEAPEVE1AatELyNeOCMceFnw==",
@@ -388,16 +408,6 @@
           "version": "1.0.9",
           "integrity": "sha512-ZMmtniWTcRiUWDB/vp5aIQYzfcrSKMN8UfWLVfTL8r8Vw0P68g7saEOX3L8LPx7kxs6rzFUmdX/qDX4w1KHsGw==",
           "published": "2026-10-31T01:26:38.519Z"
-        },
-        {
-          "version": "1.0.7",
-          "integrity": "sha512-gTv4PPMZc/1zYEN9WxP/0vnPdsmrC16deWvgoFpbMWqCLpDTZ3xUgJuEy7pK5ath4DoPFdK382pBB32YeeuAiQ==",
-          "published": "2026-10-29T00:32:37.352Z"
-        },
-        {
-          "version": "1.0.6",
-          "integrity": "sha512-yhFmr9pQgnw32hm4N1vkvcCgM4LyjprsH2ImO2DI2EKM1WKKANybkxbM9yXUeKCH6dzziTaknDuoF0atR1W97A==",
-          "published": "2026-10-28T12:43:39.713Z"
         }
       ],
       "withdrawn": []
