@@ -1,6 +1,12 @@
 {
   "releases": [
     {
+      "version": "1.3.0",
+      "date": "2026-11-14",
+      "line": "Universe has Pages, Media and Files, About Chips says what's new and what needs an update, and Chips for Mac and your computer can update themselves.",
+      "dot": true
+    },
+    {
       "version": "1.2.4",
       "date": "2026-11-11",
       "line": "Pause and Stop moved into an agent's bubble, work nobody picked up is passed on, and Spend per job got No cap.",
