@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+<title>Split the Bill</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --ink: #1d1c1a;
+    --muted: #6d6a63;
+    --line: #e4e0d7;
+    --accent: #1f7a5a;
+    --accent-ink: #ffffff;
+    --accent-soft: #e2f1ea;
+    --warn: #a64b16;
+    --warn-soft: #fbeadd;
+    --danger: #b3261e;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161513;
+      --card: #211f1c;
+      --ink: #f1eee8;
+      --muted: #a29d93;
+      --line: #36332e;
+      --accent: #46b88d;
+      --accent-ink: #0d1f18;
+      --accent-soft: #1d3a2f;
+      --warn: #f0a46c;
+      --warn-soft: #3a2618;
+      --danger: #f2827a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 16px 14px 48px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 4px 2px 14px; }
+  h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  section.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin-bottom: 14px; }
+  .hint { color: var(--muted); font-size: 14px; margin: 0; }
+
+  input, button { font: inherit; color: inherit; }
+  /* 16px+ inputs stop iOS Safari from zooming in on focus */
+  input[type=text], input[type=number], input[inputmode] {
+    width: 100%; min-height: 44px; padding: 10px 12px; font-size: 16px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px; outline: none;
+  }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  button { cursor: pointer; border: none; background: none; -webkit-tap-highlight-color: transparent; }
+  .btn { min-height: 44px; padding: 0 16px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+  .btn:disabled { opacity: 0.45; cursor: default; }
+  .btn-quiet { min-height: 36px; padding: 0 10px; border-radius: 8px; color: var(--muted); font-size: 14px; }
+  .btn-quiet:hover { background: var(--bg); color: var(--ink); }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > .grow { flex: 1; min-width: 0; }
+
+  /* People */
+  .people { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .person { display: inline-flex; align-items: center; gap: 2px; padding: 4px 4px 4px 12px; border-radius: 999px; background: var(--accent-soft); font-weight: 500; }
+  .person button { width: 32px; height: 32px; border-radius: 50%; font-size: 18px; line-height: 1; color: var(--muted); }
+  .person button:hover { color: var(--danger); }
+
+  /* Dishes */
+  .dish-form { display: grid; grid-template-columns: 1fr 112px; gap: 8px; }
+  .dish-form .btn { grid-column: 1 / -1; }
+  .money { position: relative; }
+  .money::before { content: "$"; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .money input { padding-left: 24px; }
+  .dishes { list-style: none; margin: 12px 0 0; padding: 0; }
+  .dish { border-top: 1px solid var(--line); padding: 12px 0 10px; }
+  .dish:first-child { border-top: none; padding-top: 4px; }
+  .dish-head { display: grid; grid-template-columns: 1fr 104px 36px; gap: 8px; align-items: center; }
+  .dish-head input { min-height: 40px; padding: 8px 10px; }
+  .dish-head .money input { padding-left: 22px; }
+  .dish-head .money::before { left: 10px; }
+  .remove { width: 36px; height: 36px; border-radius: 8px; color: var(--muted); font-size: 20px; line-height: 1; }
+  .remove:hover { color: var(--danger); background: var(--bg); }
+  .sharers { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+  .chip { min-height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; font-size: 14px; color: var(--muted); }
+  .chip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+  .chip.all { border-style: dashed; }
+  .each { font-size: 13px; color: var(--muted); margin-left: auto; padding-left: 6px; }
+  .warn { color: var(--warn); background: var(--warn-soft); border-radius: 8px; padding: 6px 10px; font-size: 13px; margin-top: 8px; }
+
+  /* Tax & tip */
+  .extra { display: grid; grid-template-columns: 52px 1fr auto; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .extra label { font-weight: 600; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .seg button { min-width: 44px; min-height: 42px; padding: 0 10px; color: var(--muted); font-weight: 600; }
+  .seg button[aria-pressed=true] { background: var(--accent); color: var(--accent-ink); }
+  .presets { display: flex; gap: 6px; flex-wrap: wrap; margin: -2px 0 10px 60px; }
+  .unit { position: relative; }
+  .unit::after { content: attr(data-unit); position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .unit.pre::after { content: none; }
+  .unit.pre::before { content: attr(data-unit); position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .unit.pre input { padding-left: 24px; }
+  .unit:not(.pre) input { padding-right: 30px; }
+
+  /* Totals */
+  .grand { padding: 10px 0 0; border-top: 1px solid var(--line); margin-top: 4px; }
+  .grand-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px; padding: 0 2px; font-weight: 600; }
+  .grand-total strong { font-size: 22px; font-variant-numeric: tabular-nums; }
+  .owes { list-style: none; margin: 0; padding: 0; }
+  .owe { border-top: 1px solid var(--line); }
+  .owe:first-child { border-top: none; }
+  .owe summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 2px; cursor: pointer; }
+  .owe summary::-webkit-details-marker { display: none; }
+  .owe summary .name { font-weight: 600; }
+  .owe summary .name::after { content: "›"; display: inline-block; margin-left: 8px; color: var(--muted); transition: transform .15s; }
+  .owe[open] summary .name::after { transform: rotate(90deg); }
+  .owe summary .amt { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .breakdown { margin: 0 2px 12px; font-size: 14px; color: var(--muted); }
+  .breakdown div { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; font-variant-numeric: tabular-nums; }
+  .breakdown .sub { border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 6px; color: var(--ink); }
+  .totals-line { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); padding: 2px 2px; font-variant-numeric: tabular-nums; }
+  .empty { color: var(--muted); font-size: 15px; padding: 6px 2px; margin: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Split the Bill</h1>
+    <button class="btn-quiet" id="reset" type="button">Start over</button>
+  </header>
+
+  <section class="card" aria-labelledby="h-people">
+    <h2 id="h-people">Who came</h2>
+    <form class="row" id="person-form" autocomplete="off">
+      <label class="sr" for="person-name">Name</label>
+      <input class="grow" id="person-name" type="text" placeholder="Add a name" maxlength="30" enterkeyhint="done">
+      <button class="btn" type="submit">Add</button>
+    </form>
+    <div class="people" id="people"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-dishes">
+    <h2 id="h-dishes">Dishes</h2>
+    <form class="dish-form" id="dish-form" autocomplete="off">
+      <label class="sr" for="dish-name">Dish</label>
+      <input id="dish-name" type="text" placeholder="Dish name" maxlength="40" enterkeyhint="next">
+      <label class="sr" for="dish-price">Price</label>
+      <div class="money"><input id="dish-price" type="text" inputmode="decimal" placeholder="0.00" enterkeyhint="done"></div>
+      <button class="btn" type="submit">Add dish</button>
+    </form>
+    <ul class="dishes" id="dishes"></ul>
+  </section>
+
+  <section class="card" aria-labelledby="h-extras">
+    <h2 id="h-extras">Tax &amp; tip</h2>
+    <div class="extra">
+      <label for="tax">Tax</label>
+      <div class="unit" id="tax-wrap"><input id="tax" type="text" inputmode="decimal" placeholder="0"></div>
+      <div class="seg" role="group" aria-label="Tax as">
+        <button type="button" data-mode="tax" data-val="pct">%</button>
+        <button type="button" data-mode="tax" data-val="amt">$</button>
+      </div>
+    </div>
+    <div class="extra">
+      <label for="tip">Tip</label>
+      <div class="unit" id="tip-wrap"><input id="tip" type="text" inputmode="decimal" placeholder="0"></div>
+      <div class="seg" role="group" aria-label="Tip as">
+        <button type="button" data-mode="tip" data-val="pct">%</button>
+        <button type="button" data-mode="tip" data-val="amt">$</button>
+      </div>
+    </div>
+    <div class="presets" id="tip-presets">
+      <button type="button" class="chip" data-tip="15">15%</button>
+      <button type="button" class="chip" data-tip="18">18%</button>
+      <button type="button" class="chip" data-tip="20">20%</button>
+      <button type="button" class="chip" data-tip="22">22%</button>
+    </div>
+    <p class="hint">Tax and tip are shared in proportion to what each person ordered. A tip in % is worked out on the food before tax.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-owes" id="owes-card">
+    <h2 id="h-owes">Who owes what</h2>
+    <div id="owes"></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const KEY = "split-bill-v1";
+  const $ = (s) => document.querySelector(s);
+
+  let state = load() || { people: [], dishes: [], tax: "", taxMode: "pct", tip: "", tipMode: "pct", nextId: 1 };
+
+  function load() {
+    try {
+      const s = JSON.parse(localStorage.getItem(KEY));
+      if (s && Array.isArray(s.people) && Array.isArray(s.dishes)) return s;
+    } catch (e) {}
+    return null;
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  // Parse "12.50", "$12.50", "12,50" -> number, or NaN
+  function num(v) {
+    if (typeof v === "number") return v;
+    const s = String(v || "").trim().replace(/[$%\s]/g, "").replace(",", ".");
+    if (s === "") return NaN;
+    if (!/^\d*\.?\d*$/.test(s)) return NaN;
+    return parseFloat(s);
+  }
+  const toCents = (v) => { const n = num(v); return isFinite(n) && n >= 0 ? Math.round(n * 100) : 0; };
+  const fmt = (c) => (c < 0 ? "-" : "") + "$" + (Math.abs(c) / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+
+  // Split `total` cents across `weights` so the parts are whole cents and add up exactly.
+  // Leftover cents go to the largest fractional remainders (ties: earlier entries).
+  function allocate(total, weights) {
+    const sum = weights.reduce((a, b) => a + b, 0);
+    if (sum <= 0 || total === 0) return weights.map(() => 0);
+    const raw = weights.map((w) => (total * w) / sum);
+    const out = raw.map(Math.floor);
+    let left = total - out.reduce((a, b) => a + b, 0);
+    const order = raw.map((r, i) => [r - Math.floor(r), i]).sort((a, b) => b[0] - a[0] || a[1] - b[1]);
+    for (let k = 0; left > 0; k = (k + 1) % order.length, left--) out[order[k][1]]++;
+    return out;
+  }
+
+  function compute() {
+    const ids = state.people.map((p) => p.id);
+    const idx = new Map(ids.map((id, i) => [id, i]));
+    const sub = ids.map(() => 0);
+    const items = ids.map(() => []);
+    let food = 0, unassigned = 0;
+
+    for (const d of state.dishes) {
+      const c = toCents(d.price);
+      const who = d.sharers.filter((id) => idx.has(id));
+      if (!who.length) { unassigned += c; continue; }
+      food += c;
+      const parts = allocate(c, who.map(() => 1));
+      who.forEach((id, k) => {
+        const i = idx.get(id);
+        sub[i] += parts[k];
+        items[i].push({ name: d.name, cents: parts[k], n: who.length });
+      });
+    }
+
+    const taxN = num(state.tax), tipN = num(state.tip);
+    const taxTotal = !isFinite(taxN) ? 0 : state.taxMode === "pct" ? Math.round((food * taxN) / 100) : Math.round(taxN * 100);
+    const tipTotal = !isFinite(tipN) ? 0 : state.tipMode === "pct" ? Math.round((food * tipN) / 100) : Math.round(tipN * 100);
+    const tax = allocate(taxTotal, sub);
+    const tip = allocate(tipTotal, sub);
+
+    const rows = state.people.map((p, i) => ({
+      name: p.name, sub: sub[i], tax: tax[i], tip: tip[i], total: sub[i] + tax[i] + tip[i], items: items[i],
+    }));
+    return { rows, food, taxTotal: food ? taxTotal : 0, tipTotal: food ? tipTotal : 0, unassigned };
+  }
+
+  // ---------- rendering ----------
+  function renderPeople() {
+    $("#people").innerHTML = state.people.length
+      ? state.people.map((p) =>
+          `<span class="person">${esc(p.name)}<button type="button" data-remove-person="${p.id}" aria-label="Remove ${esc(p.name)}">×</button></span>`
+        ).join("")
+      : `<p class="hint">Add everyone at the table first.</p>`;
+  }
+
+  function renderDishes() {
+    const list = $("#dishes");
+    if (!state.dishes.length) {
+      list.innerHTML = `<li class="hint" style="padding-top:4px">No dishes yet. New dishes start shared by everyone; tap names to change who had it.</li>`;
+      return;
+    }
+    list.innerHTML = state.dishes.map((d) => {
+      const live = d.sharers.filter((id) => state.people.some((p) => p.id === id));
+      const allOn = state.people.length > 0 && live.length === state.people.length;
+      const c = toCents(d.price);
+      const bad = String(d.price).trim() !== "" && !isFinite(num(d.price));
+      const each = live.length > 1 && c ? `<span class="each">${c % live.length ? "about " : ""}${fmt(Math.round(c / live.length))} each</span>` : "";
+      const chips = state.people.map((p) =>
+        `<button type="button" class="chip" data-toggle="${d.id}:${p.id}" aria-pressed="${live.includes(p.id)}">${esc(p.name)}</button>`
+      ).join("");
+      const allChip = state.people.length > 1
+        ? `<button type="button" class="chip all" data-all="${d.id}">${allOn ? "None" : "All"}</button>` : "";
+      let warn = "";
+      if (bad) warn = `<div class="warn">That price doesn’t look like a number.</div>`;
+      else if (!state.people.length) warn = `<div class="warn">Add people above, then pick who shared this.</div>`;
+      else if (!live.length) warn = `<div class="warn">Nobody is on this dish, so it isn’t counted yet.</div>`;
+      return `<li class="dish" data-dish="${d.id}">
+        <div class="dish-head">
+          <input type="text" value="${esc(d.name)}" data-edit-name="${d.id}" aria-label="Dish name" maxlength="40">
+          <div class="money"><input type="text" inputmode="decimal" value="${esc(d.price)}" data-edit-price="${d.id}" aria-label="Price of ${esc(d.name)}"></div>
+          <button type="button" class="remove" data-remove-dish="${d.id}" aria-label="Remove ${esc(d.name)}">×</button>
+        </div>
+        ${state.people.length ? `<div class="sharers">${chips}${allChip}${each}</div>` : ""}
+        ${warn}
+      </li>`;
+    }).join("");
+  }
+
+  function renderExtras() {
+    for (const k of ["tax", "tip"]) {
+      const input = $("#" + k);
+      if (document.activeElement !== input) input.value = state[k];
+      const wrap = $("#" + k + "-wrap");
+      const pct = state[k + "Mode"] === "pct";
+      wrap.dataset.unit = pct ? "%" : "$";
+      wrap.classList.toggle("pre", !pct);
+      document.querySelectorAll(`[data-mode="${k}"]`).forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.val === state[k + "Mode"])));
+    }
+    document.querySelectorAll("[data-tip]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(state.tipMode === "pct" && num(state.tip) === Number(b.dataset.tip)))
+    );
+  }
+
+  function renderOwes() {
+    const r = compute();
+    const box = $("#owes");
+    if (!state.people.length) { box.innerHTML = `<p class="empty">Add people and dishes to see the split.</p>`; return; }
+    if (!r.food) { box.innerHTML = `<p class="empty">Add a dish with a price to see the split.</p>`; return; }
+    const rows = r.rows.map((p) => {
+      const lines = p.items.map((it) =>
+        `<div><span>${esc(it.name || "Dish")}${it.n > 1 ? ` <small>(1/${it.n})</small>` : ""}</span><span>${fmt(it.cents)}</span></div>`
+      ).join("") || `<div><span>Nothing ordered</span><span>${fmt(0)}</span></div>`;
+      return `<li><details class="owe">
+        <summary><span class="name">${esc(p.name)}</span><span class="amt">${fmt(p.total)}</span></summary>
+        <div class="breakdown">${lines}
+          <div class="sub"><span>Food</span><span>${fmt(p.sub)}</span></div>
+          <div><span>Tax</span><span>${fmt(p.tax)}</span></div>
+          <div><span>Tip</span><span>${fmt(p.tip)}</span></div>
+        </div>
+      </details></li>`;
+    }).join("");
+    const sum = r.food + r.taxTotal + r.tipTotal;
+    box.innerHTML = `<ul class="owes">${rows}</ul>
+      <div class="grand">
+        <div class="totals-line"><span>Food</span><span>${fmt(r.food)}</span></div>
+        <div class="totals-line"><span>Tax</span><span>${fmt(r.taxTotal)}</span></div>
+        <div class="totals-line"><span>Tip</span><span>${fmt(r.tipTotal)}</span></div>
+        <div class="grand-total"><span>Bill total</span><strong id="grand-total">${fmt(sum)}</strong></div>
+      </div>
+      ${r.unassigned ? `<div class="warn">${fmt(r.unassigned)} of dishes has nobody on it and isn’t included.</div>` : ""}
+      <p class="hint" style="margin-top:8px">Tap a name to see the breakdown.</p>`;
+  }
+
+  function render() { renderPeople(); renderDishes(); renderExtras(); renderOwes(); save(); }
+  // Lighter update while typing in a field, so focus isn't lost.
+  function refresh() { renderExtras(); renderOwes(); save(); }
+
+  // ---------- events ----------
+  $("#person-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = $("#person-name");
+    const name = input.value.trim().replace(/\s+/g, " ");
+    if (!name) return;
+    const id = state.nextId++;
+    state.people.push({ id, name });
+    // Someone who arrives late is added to dishes that everyone was already sharing.
+    for (const d of state.dishes) {
+      if (state.people.length > 1 && state.people.slice(0, -1).every((p) => d.sharers.includes(p.id))) d.sharers.push(id);
+    }
+    input.value = "";
+    input.focus();
+    render();
+  });
+
+  $("#dish-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nameEl = $("#dish-name"), priceEl = $("#dish-price");
+    const price = priceEl.value.trim();
+    const n = num(price);
+    if (!isFinite(n) || n < 0) { priceEl.focus(); priceEl.select(); return; }
+    const name = nameEl.value.trim() || `Dish ${state.dishes.length + 1}`;
+    state.dishes.push({ id: state.nextId++, name, price: (Math.round(n * 100) / 100).toFixed(2), sharers: state.people.map((p) => p.id) });
+    nameEl.value = ""; priceEl.value = "";
+    nameEl.focus();
+    render();
+  });
+  $("#dish-name").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); $("#dish-price").focus(); }
+  });
+
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("button");
+    if (!t) return;
+    if (t.dataset.removePerson) {
+      const id = Number(t.dataset.removePerson);
+      state.people = state.people.filter((p) => p.id !== id);
+      state.dishes.forEach((d) => (d.sharers = d.sharers.filter((s) => s !== id)));
+      render();
+    } else if (t.dataset.removeDish) {
+      const id = Number(t.dataset.removeDish);
+      state.dishes = state.dishes.filter((d) => d.id !== id);
+      render();
+    } else if (t.dataset.toggle) {
+      const [did, pid] = t.dataset.toggle.split(":").map(Number);
+      const d = state.dishes.find((x) => x.id === did);
+      d.sharers = d.sharers.includes(pid) ? d.sharers.filter((s) => s !== pid) : [...d.sharers, pid];
+      render();
+    } else if (t.dataset.all) {
+      const d = state.dishes.find((x) => x.id === Number(t.dataset.all));
+      const allOn = state.people.every((p) => d.sharers.includes(p.id));
+      d.sharers = allOn ? [] : state.people.map((p) => p.id);
+      render();
+    } else if (t.dataset.mode) {
+      state[t.dataset.mode + "Mode"] = t.dataset.val;
+      refresh();
+    } else if (t.dataset.tip) {
+      state.tip = t.dataset.tip; state.tipMode = "pct";
+      $("#tip").value = state.tip;
+      refresh();
+    } else if (t.id === "reset") {
+      if (confirm("Clear everyone, every dish, tax and tip?")) {
+        state = { people: [], dishes: [], tax: "", taxMode: "pct", tip: "", tipMode: "pct", nextId: 1 };
+        $("#tax").value = ""; $("#tip").value = "";
+        render();
+      }
+    }
+  });
+
+  document.addEventListener("input", (e) => {
+    const t = e.target;
+    if (t.id === "tax" || t.id === "tip") { state[t.id] = t.value; refresh(); return; }
+    if (t.dataset.editName) {
+      state.dishes.find((d) => d.id === Number(t.dataset.editName)).name = t.value;
+      refresh();
+    } else if (t.dataset.editPrice) {
+      state.dishes.find((d) => d.id === Number(t.dataset.editPrice)).price = t.value;
+      refresh();
+    }
+  });
+  // Re-draw the dish list once an edit is finished (updates "each" and warnings).
+  document.addEventListener("change", (e) => {
+    if (e.target.dataset.editName || e.target.dataset.editPrice) renderDishes();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

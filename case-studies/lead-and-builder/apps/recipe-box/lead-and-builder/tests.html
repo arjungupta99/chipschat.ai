@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Recipe Box — quantity tests</title>
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --text: #241f19;
+      --muted: #6b6357;
+      --line: #ddd6c9;
+      --pass: #1e6b3a;
+      --pass-bg: #e6f4ea;
+      --fail: #a02020;
+      --fail-bg: #fbe9e7;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16130f;
+        --surface: #221d18;
+        --text: #f3ede4;
+        --muted: #b3a898;
+        --line: #3a332b;
+        --pass: #7fda9b;
+        --pass-bg: #1c2f22;
+        --fail: #ff9a90;
+        --fail-bg: #38201c;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px 16px 60px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    main, header { max-width: 860px; margin: 0 auto; }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0 0 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .sub { margin: 0 0 16px; color: var(--muted); font-size: 0.92rem; }
+
+    .summary {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .summary.pass { color: var(--pass); background: var(--pass-bg); border-color: transparent; }
+    .summary.fail { color: var(--fail); background: var(--fail-bg); border-color: transparent; }
+
+    .links { margin: 0 0 22px; font-size: 0.92rem; }
+    .links a { color: inherit; }
+
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    li {
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-left-width: 5px;
+      border-radius: 10px;
+    }
+
+    li.pass { border-left-color: var(--pass); }
+    li.fail { border-left-color: var(--fail); background: var(--fail-bg); }
+
+    .name { font-weight: 600; }
+
+    .tag {
+      float: right;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    li.pass .tag { color: var(--pass); }
+    li.fail .tag { color: var(--fail); }
+
+    .detail {
+      margin-top: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .detail span { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>quantity.js tests</h1>
+    <p class="sub">Amount parsing, exact fractions, scaling and shopping-list merging.</p>
+    <p id="summary" class="summary">Running…</p>
+    <p class="links"><a href="index.html">Open the recipe box →</a></p>
+  </header>
+
+  <main>
+    <ol id="results"></ol>
+  </main>
+
+  <script src="quantity.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var Qty = window.Qty;
+      var results = [];
+
+      function check(name, actual, expected) {
+        var pass = JSON.stringify(actual) === JSON.stringify(expected);
+        results.push({ name: name, pass: pass, actual: actual, expected: expected });
+      }
+
+      function mergeLines(lines) {
+        var items = lines.map(function (pair) {
+          return { text: pair[0], source: pair[1] };
+        });
+        return Qty.buildShoppingList(items).map(Qty.formatShoppingRow);
+      }
+
+      function rowSources(lines) {
+        var items = lines.map(function (pair) {
+          return { text: pair[0], source: pair[1] };
+        });
+        return Qty.buildShoppingList(items)[0].sources;
+      }
+
+      /* ---------- reading amounts ---------- */
+
+      check('"1 1/2 cups flour" reads as 1 ½ cups flour',
+        Qty.formatIngredientText('1 1/2 cups flour', 1), '1 ½ cups flour');
+
+      check('"½ cup sugar" reads as ½ cup sugar',
+        Qty.formatIngredientText('½ cup sugar', 1), '½ cup sugar');
+
+      check('"1½ cups milk" reads as 1 ½ cups milk',
+        Qty.formatIngredientText('1½ cups milk', 1), '1 ½ cups milk');
+
+      check('"1 ½ cups milk" reads as 1 ½ cups milk',
+        Qty.formatIngredientText('1 ½ cups milk', 1), '1 ½ cups milk');
+
+      check('".5 cup milk" reads as ½ cup milk',
+        Qty.formatIngredientText('.5 cup milk', 1), '½ cup milk');
+
+      check('"1.5 cups milk" reads as 1 ½ cups milk',
+        Qty.formatIngredientText('1.5 cups milk', 1), '1 ½ cups milk');
+
+      check('"3/4 cup oats" reads as ¾ cup oats',
+        Qty.formatIngredientText('3/4 cup oats', 1), '¾ cup oats');
+
+      check('"2-3 cups flour" is a range 2–3',
+        Qty.formatQty(Qty.parseIngredient('2-3 cups flour').qty), '2–3');
+
+      check('"2–3 cups flour" (en dash) is a range 2–3',
+        Qty.formatQty(Qty.parseIngredient('2–3 cups flour').qty), '2–3');
+
+      check('"2 1/2 tbsp butter" keeps the exact fraction',
+        Qty.parseIngredient('2 1/2 tbsp butter').qty.lo, { n: 5, d: 2 });
+
+      check('"1/3 cup" keeps the exact fraction',
+        Qty.parseIngredient('1/3 cup').qty.lo, { n: 1, d: 3 });
+
+      /* ---------- units and names ---------- */
+
+      check('"cups" is the unit cup',
+        Qty.parseIngredient('1 1/2 cups flour').unit, 'cup');
+
+      check('"tbsp." is the unit tbsp',
+        Qty.parseIngredient('1 1/2 tbsp. butter').unit, 'tbsp');
+
+      check('a capital T means tbsp',
+        Qty.parseIngredient('1 T butter').unit, 'tbsp');
+
+      check('a lower-case t means tsp',
+        Qty.parseIngredient('1 t salt').unit, 'tsp');
+
+      check('"c" is the unit cup',
+        Qty.parseIngredient('1 c flour').unit, 'cup');
+
+      check('"fl oz" is one unit',
+        Qty.parseIngredient('2 fl oz cream').unit, 'fl oz');
+
+      check('"2 cups of flour" drops "of"',
+        Qty.parseIngredient('2 cups of flour').name, 'flour');
+
+      check('"onion, chopped" merges as onion',
+        Qty.nameKey('onion, chopped'), 'onion');
+
+      check('"2 cloves garlic" has the clove unit',
+        Qty.parseIngredient('2 cloves garlic').unit, 'clove');
+
+      check('"salt to taste" has no amount',
+        Qty.parseIngredient('salt to taste').qty, null);
+
+      check('"pinch of salt" has no amount and is kept as written',
+        Qty.parseIngredient('pinch of salt').name, 'pinch of salt');
+
+      check('a note after a comma survives at the same servings',
+        Qty.formatIngredientText('2 large eggs, beaten', 1), '2 large eggs, beaten');
+
+      check('scaling up changes only the head noun',
+        Qty.formatIngredientText('1 lemon, juiced', 3), '3 lemons, juiced');
+
+      check('capitals and notes are kept',
+        Qty.formatIngredientText('2 Onions, finely chopped', 1), '2 Onions, finely chopped');
+
+      check('scaling down singularises the head noun',
+        Qty.formatIngredientText('2 large eggs, beaten', Qty.frac(1, 2)), '1 large egg, beaten');
+
+      check('a name with " of " is left alone when scaled',
+        Qty.formatIngredientText('1 bunch of herbs', 2), '2 bunch of herbs');
+
+      check('a name with a bracket is left alone when scaled',
+        Qty.formatIngredientText('1 (14 oz) can tomatoes', 2), '2 (14 oz) can tomatoes');
+
+      /* ---------- shopping list ---------- */
+
+      check('2 cups flour + 1 cup flour = 3 cups flour',
+        mergeLines([['2 cups flour', 'A'], ['1 cup flour', 'B']]),
+        ['3 cups flour']);
+
+      check('1 1/2 cups flour + ½ cup flour = 2 cups flour',
+        mergeLines([['1 1/2 cups flour', 'A'], ['½ cup flour', 'B']]),
+        ['2 cups flour']);
+
+      check('1/3 cup sugar + 2/3 cup sugar = 1 cup sugar',
+        mergeLines([['1/3 cup sugar', 'A'], ['2/3 cup sugar', 'B']]),
+        ['1 cup sugar']);
+
+      check('1/3 + 2/3 is exactly 1, not 0.999…',
+        Qty.addFrac(Qty.frac(1, 3), Qty.frac(2, 3)), { n: 1, d: 1 });
+
+      check('½ cup + ½ cup = 1 cup',
+        mergeLines([['½ cup sugar', 'A'], ['½ cup sugar', 'B']]),
+        ['1 cup sugar']);
+
+      check('2 eggs + 3 eggs = 5 eggs',
+        mergeLines([['2 eggs', 'A'], ['3 eggs', 'B']]),
+        ['5 eggs']);
+
+      check('1 tbsp butter + 3 tsp butter = 2 tbsp butter',
+        mergeLines([['1 tbsp butter', 'A'], ['3 tsp butter', 'B']]),
+        ['2 tbsp butter']);
+
+      check('4 tbsp + 1/4 cup = ½ cup',
+        mergeLines([['4 tbsp butter', 'A'], ['1/4 cup butter', 'B']]),
+        ['½ cup butter']);
+
+      check('2 cloves + 3 cloves = 5 cloves garlic',
+        mergeLines([['2 cloves garlic', 'A'], ['3 cloves garlic', 'B']]),
+        ['5 cloves garlic']);
+
+      check('1 lb + 8 oz = 1 ½ lb',
+        mergeLines([['1 lb sugar', 'A'], ['8 oz sugar', 'B']]),
+        ['1 ½ lb sugar']);
+
+      check('200 ml + 100 ml = 300 ml',
+        mergeLines([['200 ml milk', 'A'], ['100 ml milk', 'B']]),
+        ['300 ml milk']);
+
+      check('cups and millilitres mix in the first recipe’s unit',
+        mergeLines([['1 cup milk', 'A'], ['240 ml milk', 'B']]),
+        ['2 cups milk']);
+
+      check('"salt to taste" is listed once, not added',
+        mergeLines([['salt to taste', 'A'], ['salt to taste', 'B']]),
+        ['salt — to taste']);
+
+      check('the merged row remembers both recipes',
+        rowSources([['2 cups flour', 'Pancakes'], ['1 cup flour', 'Cake']]),
+        ['Pancakes', 'Cake']);
+
+      check('cup and clove stay on separate lines',
+        mergeLines([['1 cup flour', 'A'], ['2 cloves garlic', 'B']]),
+        ['1 cup flour', '2 cloves garlic']);
+
+      check('a range merges by its upper end',
+        mergeLines([['2-3 cups flour', 'A'], ['1 cup flour', 'B']]),
+        ['4 cups flour']);
+
+      check('2 tomatoes + 1 tomato = 3 tomatoes',
+        mergeLines([['2 tomatoes', 'A'], ['1 tomato', 'B']]),
+        ['3 tomatoes']);
+
+      check('measure words stay as written: leaves basil',
+        mergeLines([['2 leaves basil', 'A'], ['3 leaves basil', 'B']]),
+        ['5 leaves basil']);
+
+      check('cookies and cookie merge',
+        mergeLines([['2 cookies', 'A'], ['1 cookie', 'B']]),
+        ['3 cookies']);
+
+      check('shopping rows drop comma notes',
+        mergeLines([['4 tbsp butter, melted', 'A'], ['1 cup butter, softened', 'B']]),
+        ['1 ¼ cups butter']);
+
+      check('a "to taste" line joins the row that has amounts',
+        mergeLines([['1 tsp salt', 'A'], ['Salt to taste', 'B']]),
+        ['1 tsp salt']);
+
+      check('a lone "to taste" line is lowercase',
+        mergeLines([['Salt to taste', 'A']]),
+        ['salt — to taste']);
+
+      check('a folded "to taste" line keeps its recipe',
+        rowSources([['1 tsp salt', 'Pancakes'], ['Salt to taste', 'Omelette']]),
+        ['Pancakes', 'Omelette']);
+
+      /* ---------- scaling ---------- */
+
+      check('4 → 6 servings of 1 1/2 cups = 2 ¼ cups',
+        Qty.formatIngredientText('1 1/2 cups flour',
+          Qty.divFrac(Qty.frac(6, 1), Qty.frac(4, 1))),
+        '2 ¼ cups flour');
+
+      check('scaling both ends of a range',
+        Qty.formatIngredientText('2-3 cups flour', 2),
+        '4–6 cups flour');
+
+      check('scaling ½ cup down to half',
+        Qty.formatIngredientText('½ cup milk', Qty.frac(1, 2)),
+        '¼ cup milk');
+
+      check('scaling a count keeps the plural right',
+        Qty.formatIngredientText('2 eggs', Qty.frac(1, 2)),
+        '1 egg');
+
+      var parsed = Qty.parseIngredient('1 1/2 cups flour');
+      var scaled = Qty.scaleQty(parsed.qty, Qty.frac(3, 2));
+      check('scaling does not change the saved amount',
+        Qty.formatQty(parsed.qty), '1 ½');
+      check('the scaled amount is 2 ¼',
+        Qty.formatQty(scaled), '2 ¼');
+
+      /* ---------- unit words ---------- */
+
+      check('one cup is singular',
+        Qty.formatUnit('cup', { lo: Qty.frac(1, 1), hi: null }), 'cup');
+
+      check('three cups is plural',
+        Qty.formatUnit('cup', { lo: Qty.frac(3, 1), hi: null }), 'cups');
+
+      check('half a cup stays singular',
+        Qty.formatUnit('cup', { lo: Qty.frac(1, 2), hi: null }), 'cup');
+
+      check('tbsp never pluralises',
+        Qty.formatUnit('tbsp', { lo: Qty.frac(3, 1), hi: null }), 'tbsp');
+
+      check('a range pluralises by its upper end',
+        Qty.formatIngredientText('1-2 cups flour', 1), '1–2 cups flour');
+
+      check('the unit for a range uses the upper end',
+        Qty.formatUnit('cup', { lo: Qty.frac(1, 1), hi: Qty.frac(2, 1) }), 'cups');
+
+      check('a scaled no-amount line is kept as written',
+        Qty.formatIngredientText('salt to taste', 2), 'salt to taste');
+
+      /* ---------- render ---------- */
+
+      var summary = document.getElementById('summary');
+      var list = document.getElementById('results');
+      var passed = results.filter(function (r) { return r.pass; }).length;
+      var failed = results.length - passed;
+
+      function show(value) {
+        return typeof value === 'string' ? value : JSON.stringify(value);
+      }
+
+      results.forEach(function (result) {
+        var li = document.createElement('li');
+        li.className = result.pass ? 'pass' : 'fail';
+
+        var tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = result.pass ? 'pass' : 'fail';
+
+        var name = document.createElement('span');
+        name.className = 'name';
+        name.textContent = result.name;
+
+        li.appendChild(tag);
+        li.appendChild(name);
+
+        if (!result.pass) {
+          var detail = document.createElement('div');
+          detail.className = 'detail';
+          detail.textContent = 'expected: ' + show(result.expected) + '\nactual:   ' + show(result.actual);
+          li.appendChild(detail);
+        }
+
+        list.appendChild(li);
+      });
+
+      summary.textContent = failed === 0
+        ? 'All ' + results.length + ' checks pass'
+        : failed + ' of ' + results.length + ' checks failing';
+      summary.className = 'summary ' + (failed === 0 ? 'pass' : 'fail');
+    })();
+  </script>
+</body>
+</html>

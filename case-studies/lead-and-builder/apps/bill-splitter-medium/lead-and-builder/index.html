@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f2ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+  <title>Bill Splitter</title>
+  <style>
+    :root {
+      --bg: #f3f2ef;
+      --card: #ffffff;
+      --inset: #f8f7f4;
+      --field: #ffffff;
+      --text: #191a1c;
+      --muted: #68665f;
+      --line: #ddd9d1;
+      --accent: #0e6b4f;
+      --on-accent: #ffffff;
+      --accent-soft: #e2f1ea;
+      --focus-ring: rgba(14, 107, 79, 0.18);
+      --danger: #b3261e;
+      --danger-soft: #fbe9e7;
+      --warn-bg: #fff2cc;
+      --warn-text: #6b4a00;
+      --shadow: 0 1px 2px rgba(20, 20, 20, 0.04), 0 8px 24px rgba(20, 20, 20, 0.05);
+      --radius: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121316;
+        --card: #1b1d21;
+        --inset: #212327;
+        --field: #24262b;
+        --text: #f2f1ee;
+        --muted: #a09e97;
+        --line: #34373d;
+        --accent: #5fd0a8;
+        --on-accent: #0c2a20;
+        --accent-soft: #1e3a30;
+        --focus-ring: rgba(95, 208, 168, 0.22);
+        --danger: #ff8a80;
+        --danger-soft: #3a2222;
+        --warn-bg: #3a2f10;
+        --warn-text: #ffd98a;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+      padding: 16px 12px calc(32px + env(safe-area-inset-bottom));
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+
+    .app {
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 4px 0;
+    }
+
+    .brand {
+      flex: 1;
+      min-width: 0;
+    }
+
+    h1 {
+      margin: 0 0 2px;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-head h2 {
+      margin-bottom: 0;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .btn {
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+      font-size: 15px;
+      padding: 0 14px;
+    }
+
+    .input,
+    .inline-form input {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--field);
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input::placeholder,
+    .inline-form input::placeholder,
+    .money-input input::placeholder,
+    .affix-input input::placeholder {
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .input:focus,
+    .inline-form input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+
+    .inline-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .inline-form input {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .error {
+      margin: 8px 0 0;
+      color: var(--danger);
+      font-size: 13px;
+    }
+
+    .people-list {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .people-list:empty {
+      margin: 0;
+    }
+
+    .empty-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      max-width: 100%;
+      min-height: 44px;
+      padding-left: 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--accent-soft);
+    }
+
+    .person-name {
+      font-size: 15px;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .icon-btn:hover {
+      color: var(--danger);
+      background: var(--danger-soft);
+    }
+
+    .dishes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dish {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--inset);
+    }
+
+    .dish-head {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dish-name {
+      flex: 1 1 auto;
+      width: auto;
+      min-width: 0;
+      font-weight: 600;
+    }
+
+    .money-input {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+      padding-left: 12px;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--field);
+    }
+
+    .money-input:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+
+    .money-input .prefix {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .money-input input {
+      flex: 1;
+      min-width: 0;
+      min-height: 42px;
+      padding: 0 12px 0 4px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .sharers {
+      margin-top: 12px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .chip input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .chip span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--field);
+      color: var(--text);
+      font-size: 15px;
+      overflow-wrap: anywhere;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .chip input:checked + span {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      font-weight: 600;
+    }
+
+    .chip input:focus-visible + span {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .dish-warning {
+      margin: 10px 0 0;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      font-size: 13px;
+    }
+
+    .add-dish {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .affix-input {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--field);
+    }
+
+    .affix-input:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+
+    .affix-input input {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      min-height: 42px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .affix-input .suffix {
+      margin-left: 4px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .tip-quick {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tip-quick button {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--field);
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tip-quick button.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .switch-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      margin-top: 14px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .switch-row input {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+    }
+
+    .note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .note.small {
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .note.warn {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--warn-bg);
+      color: var(--warn-text);
+    }
+
+    .empty {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .person-result {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .person-result:first-child {
+      padding-top: 0;
+    }
+
+    .person-result:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .pr-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .pr-name {
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .pr-total {
+      font-size: 18px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .pr-breakdown {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .summary {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 14px 0 0;
+      border-top: 2px solid var(--line);
+    }
+
+    .summary > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    .summary dt {
+      color: var(--muted);
+    }
+
+    .summary dd {
+      margin: 0;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .summary .grand {
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 18px;
+    }
+
+    .summary .grand dt,
+    .summary .grand dd {
+      color: var(--text);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Bill Splitter</h1>
+        <p class="tagline">Who owes what, down to the cent.</p>
+      </div>
+      <button type="button" class="btn ghost" data-action="new-bill">New bill</button>
+    </header>
+
+    <section class="card" aria-labelledby="people-heading">
+      <h2 id="people-heading">People</h2>
+      <form id="person-form" class="inline-form" autocomplete="off">
+        <input id="person-name" type="text" name="person" placeholder="Add a name" aria-label="Person's name" maxlength="40" enterkeyhint="done" autocapitalize="words">
+        <button type="submit" class="btn">Add</button>
+      </form>
+      <p id="person-error" class="error" role="alert" hidden></p>
+      <ul id="people-list" class="people-list"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="dishes-heading">
+      <div class="section-head">
+        <h2 id="dishes-heading">Dishes</h2>
+        <span id="dish-count" class="count"></span>
+      </div>
+      <div id="dishes-list" class="dishes"></div>
+      <button type="button" class="btn add-dish" data-action="add-dish">+ Add dish</button>
+    </section>
+
+    <section class="card" aria-labelledby="tax-heading">
+      <h2 id="tax-heading">Tax &amp; tip</h2>
+      <div class="field-row">
+        <label class="field">
+          <span class="field-label">Tax</span>
+          <span class="affix-input">
+            <input id="taxPct" type="text" inputmode="decimal" placeholder="0" aria-label="Tax percentage" autocomplete="off">
+            <span class="suffix" aria-hidden="true">%</span>
+          </span>
+        </label>
+        <label class="field">
+          <span class="field-label">Tip</span>
+          <span class="affix-input">
+            <input id="tipPct" type="text" inputmode="decimal" placeholder="0" aria-label="Tip percentage" autocomplete="off">
+            <span class="suffix" aria-hidden="true">%</span>
+          </span>
+        </label>
+      </div>
+      <div class="tip-quick" role="group" aria-label="Quick tip percentages">
+        <button type="button" data-action="set-tip" data-tip="15" aria-pressed="false">15%</button>
+        <button type="button" data-action="set-tip" data-tip="18" aria-pressed="false">18%</button>
+        <button type="button" data-action="set-tip" data-tip="20" aria-pressed="false">20%</button>
+        <button type="button" data-action="set-tip" data-tip="25" aria-pressed="false">25%</button>
+      </div>
+      <label class="switch-row">
+        <input type="checkbox" id="tipAfterTax">
+        <span>Charge the tip on the after-tax total</span>
+      </label>
+      <p id="tip-base-note" class="note">Tip is charged on the pre-tax subtotal.</p>
+    </section>
+
+    <section class="card" aria-labelledby="results-heading">
+      <h2 id="results-heading">Results</h2>
+      <div id="results" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var STORAGE_KEY = 'bill-splitter-v1';
+
+      var state = {
+        people: [],
+        dishes: [],
+        taxPct: '',
+        tipPct: '',
+        tipAfterTax: false
+      };
+
+      var currency = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      });
+
+      function makeId() {
+        try {
+          if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+            return window.crypto.randomUUID();
+          }
+        } catch (err) {
+          /* fall through */
+        }
+        return 'id-' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+      }
+
+      function safeId(value) {
+        return typeof value === 'string' && /^[A-Za-z0-9_-]{1,64}$/.test(value) ? value : null;
+      }
+
+      function esc(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+        });
+      }
+
+      function money(cents) {
+        return currency.format(cents / 100);
+      }
+
+      function priceToCents(raw) {
+        if (raw == null) return 0;
+        var text = String(raw).trim();
+        if (!text) return 0;
+        text = text.replace(/[$,\s]/g, '');
+        var value = parseFloat(text);
+        if (!isFinite(value) || value <= 0) return 0;
+        return Math.round(value * 100);
+      }
+
+      function percentValue(raw) {
+        var value = parseFloat(String(raw == null ? '' : raw).trim());
+        if (!isFinite(value) || value < 0) return 0;
+        return value;
+      }
+
+      function percentLabel(value) {
+        return String(Math.round(value * 100) / 100);
+      }
+
+      /*
+       * Split an integer number of cents proportionally to integer weights.
+       * Every cent is handed out: whole cents first, then leftovers to the
+       * largest fractional remainders (ties go to the earlier person), so the
+       * shares always add up to the exact total.
+       */
+      function allocate(total, weights) {
+        var n = weights.length;
+        var shares = [];
+        var i;
+
+        for (i = 0; i < n; i++) shares.push(0);
+        if (n === 0 || total <= 0) return shares;
+
+        var weightSum = 0;
+        for (i = 0; i < n; i++) weightSum += weights[i];
+        if (weightSum <= 0) return shares;
+
+        var remainders = [];
+        var assigned = 0;
+
+        for (i = 0; i < n; i++) {
+          var exact = total * weights[i] / weightSum;
+          var base = Math.floor(exact);
+          shares[i] = base;
+          assigned += base;
+          remainders.push({ index: i, remainder: exact - base });
+        }
+
+        remainders.sort(function (a, b) {
+          return b.remainder - a.remainder || a.index - b.index;
+        });
+
+        var leftover = total - assigned;
+        var k = 0;
+        while (leftover > 0) {
+          shares[remainders[k % n].index] += 1;
+          leftover -= 1;
+          k += 1;
+        }
+
+        /* Guard against floating-point overshoot; should not normally run. */
+        while (leftover < 0) {
+          var largest = -1;
+          for (i = 0; i < n; i++) {
+            if (shares[i] > 0 && (largest === -1 || shares[i] > shares[largest])) largest = i;
+          }
+          if (largest === -1) break;
+          shares[largest] -= 1;
+          leftover += 1;
+        }
+
+        return shares;
+      }
+
+      function computeBill(current) {
+        var subtotals = Object.create(null);
+        var subtotalCents = 0;
+        var unshared = [];
+        var i;
+
+        for (i = 0; i < current.people.length; i++) {
+          subtotals[current.people[i].id] = 0;
+        }
+
+        current.dishes.forEach(function (dish) {
+          var cents = priceToCents(dish.price);
+          var sharers = current.people.filter(function (person) {
+            return dish.sharers.indexOf(person.id) !== -1;
+          });
+
+          if (sharers.length === 0) {
+            unshared.push(dish.name.trim() || 'Untitled dish');
+            return;
+          }
+
+          subtotalCents += cents;
+          var base = Math.floor(cents / sharers.length);
+          var remainder = cents - base * sharers.length;
+
+          sharers.forEach(function (person, index) {
+            subtotals[person.id] += base + (index < remainder ? 1 : 0);
+          });
+        });
+
+        var taxRate = percentValue(current.taxPct);
+        var tipRate = percentValue(current.tipPct);
+        var taxCents = Math.round(subtotalCents * taxRate / 100);
+        var tipBase = current.tipAfterTax ? subtotalCents + taxCents : subtotalCents;
+        var tipCents = Math.round(tipBase * tipRate / 100);
+        var grandCents = subtotalCents + taxCents + tipCents;
+
+        var weights = current.people.map(function (person) {
+          return subtotals[person.id];
+        });
+        var taxShares = allocate(taxCents, weights);
+        var tipShares = allocate(tipCents, weights);
+
+        var rows = current.people.map(function (person, index) {
+          var food = subtotals[person.id];
+          return {
+            id: person.id,
+            name: person.name,
+            food: food,
+            tax: taxShares[index],
+            tip: tipShares[index],
+            total: food + taxShares[index] + tipShares[index]
+          };
+        });
+
+        return {
+          rows: rows,
+          subtotal: subtotalCents,
+          tax: taxCents,
+          tip: tipCents,
+          grand: grandCents,
+          taxRate: taxRate,
+          tipRate: tipRate,
+          unshared: unshared
+        };
+      }
+
+      var els = {
+        personForm: document.getElementById('person-form'),
+        personName: document.getElementById('person-name'),
+        personError: document.getElementById('person-error'),
+        peopleList: document.getElementById('people-list'),
+        dishesList: document.getElementById('dishes-list'),
+        dishCount: document.getElementById('dish-count'),
+        taxPct: document.getElementById('taxPct'),
+        tipPct: document.getElementById('tipPct'),
+        tipAfterTax: document.getElementById('tipAfterTax'),
+        tipBaseNote: document.getElementById('tip-base-note'),
+        results: document.getElementById('results')
+      };
+
+      function findDish(id) {
+        for (var i = 0; i < state.dishes.length; i++) {
+          if (state.dishes[i].id === id) return state.dishes[i];
+        }
+        return null;
+      }
+
+      function showPersonError(message) {
+        els.personError.textContent = message;
+        els.personError.hidden = false;
+      }
+
+      function clearPersonError() {
+        els.personError.textContent = '';
+        els.personError.hidden = true;
+      }
+
+      function renderPeople() {
+        if (state.people.length === 0) {
+          els.peopleList.innerHTML = '<li class="empty-note">No one yet. Add the people at the table.</li>';
+          return;
+        }
+
+        els.peopleList.innerHTML = state.people.map(function (person) {
+          return '<li class="person">' +
+            '<span class="person-name">' + esc(person.name) + '</span>' +
+            '<button type="button" class="icon-btn" data-action="remove-person" data-id="' + esc(person.id) + '" aria-label="Remove ' + esc(person.name) + '">&times;</button>' +
+            '</li>';
+        }).join('');
+      }
+
+      function dishCard(dish) {
+        var chips;
+
+        if (state.people.length > 0) {
+          chips = '<div class="chips">' + state.people.map(function (person) {
+            var checked = dish.sharers.indexOf(person.id) !== -1 ? ' checked' : '';
+            return '<label class="chip">' +
+              '<input type="checkbox" data-sharer data-dish-id="' + esc(dish.id) + '" value="' + esc(person.id) + '"' + checked + '>' +
+              '<span>' + esc(person.name) + '</span>' +
+              '</label>';
+          }).join('') + '</div>';
+        } else {
+          chips = '<p class="note small">Add people above to choose who shared this dish.</p>';
+        }
+
+        var warningText = 'No one is sharing this dish, so it isn\'t counted.';
+        var warning = '<p class="dish-warning" data-warning-for="' + esc(dish.id) + '"' +
+          (dish.sharers.length === 0 ? '' : ' hidden') + '>' + warningText + '</p>';
+
+        return '<article class="dish" data-dish-card="' + esc(dish.id) + '">' +
+          '<div class="dish-head">' +
+            '<input class="input dish-name" type="text" data-dish-name="' + esc(dish.id) + '" value="' + esc(dish.name) + '" placeholder="Dish name" aria-label="Dish name" maxlength="60" enterkeyhint="next" autocomplete="off">' +
+            '<button type="button" class="icon-btn" data-action="remove-dish" data-id="' + esc(dish.id) + '" aria-label="Remove ' + esc(dish.name || 'dish') + '">&times;</button>' +
+          '</div>' +
+          '<div class="money-input">' +
+            '<span class="prefix" aria-hidden="true">$</span>' +
+            '<input type="text" inputmode="decimal" data-dish-price="' + esc(dish.id) + '" value="' + esc(dish.price) + '" placeholder="0.00" aria-label="Price for ' + esc(dish.name || 'this dish') + '" autocomplete="off">' +
+          '</div>' +
+          '<div class="sharers">' +
+            '<span class="label">Shared by</span>' +
+            chips +
+          '</div>' +
+          warning +
+          '</article>';
+      }
+
+      function renderDishes() {
+        els.dishesList.innerHTML = state.dishes.map(dishCard).join('');
+        els.dishCount.textContent = state.dishes.length
+          ? state.dishes.length + (state.dishes.length === 1 ? ' dish' : ' dishes')
+          : '';
+      }
+
+      function renderResults() {
+        var bill = computeBill(state);
+
+        if (state.people.length === 0) {
+          els.results.innerHTML = '<p class="empty">Add people and dishes to see what each person owes.</p>';
+          return;
+        }
+
+        var peopleHtml = bill.rows.map(function (row) {
+          return '<div class="person-result">' +
+            '<div class="pr-top">' +
+              '<span class="pr-name">' + esc(row.name) + '</span>' +
+              '<span class="pr-total">' + money(row.total) + '</span>' +
+            '</div>' +
+            '<div class="pr-breakdown">Food ' + money(row.food) + ' &middot; Tax ' + money(row.tax) + ' &middot; Tip ' + money(row.tip) + '</div>' +
+            '</div>';
+        }).join('');
+
+        var taxLabel = bill.taxRate > 0 ? ' (' + percentLabel(bill.taxRate) + '%)' : '';
+        var tipLabel = bill.tipRate > 0 ? ' (' + percentLabel(bill.tipRate) + '%)' : '';
+
+        var summary = '<dl class="summary">' +
+          '<div><dt>Subtotal</dt><dd>' + money(bill.subtotal) + '</dd></div>' +
+          '<div><dt>Tax' + taxLabel + '</dt><dd>' + money(bill.tax) + '</dd></div>' +
+          '<div><dt>Tip' + tipLabel + '</dt><dd>' + money(bill.tip) + '</dd></div>' +
+          '<div class="grand"><dt>Total</dt><dd>' + money(bill.grand) + '</dd></div>' +
+          '</dl>';
+
+        var unsharedNote = bill.unshared.length
+          ? '<p class="note warn">Not counted: ' + bill.unshared.map(esc).join(', ') +
+            '. No one is sharing ' + (bill.unshared.length === 1 ? 'it' : 'them') + '.</p>'
+          : '';
+
+        els.results.innerHTML = '<div class="people-results">' + peopleHtml + '</div>' + summary + unsharedNote;
+      }
+
+      function renderTipButtons() {
+        var current = percentValue(state.tipPct);
+        var buttons = document.querySelectorAll('[data-tip]');
+
+        Array.prototype.forEach.call(buttons, function (button) {
+          var active = String(state.tipPct).trim() !== '' &&
+            current === Number(button.getAttribute('data-tip'));
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      }
+
+      function renderTipNote() {
+        els.tipBaseNote.textContent = state.tipAfterTax
+          ? 'Tip is charged on the after-tax total.'
+          : 'Tip is charged on the pre-tax subtotal.';
+      }
+
+      function renderAll() {
+        renderPeople();
+        renderDishes();
+        renderResults();
+        renderTipButtons();
+        renderTipNote();
+      }
+
+      function updateDishWarning(dish) {
+        var warning = document.querySelector('[data-warning-for="' + dish.id + '"]');
+        if (warning) warning.hidden = dish.sharers.length > 0;
+      }
+
+      function save() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (err) {
+          /* Storage can be unavailable (private mode); the page still works. */
+        }
+      }
+
+      function normalizeState(raw) {
+        var people = [];
+        var seenNames = Object.create(null);
+        var seenIds = Object.create(null);
+        var rawPeople = Array.isArray(raw.people) ? raw.people : [];
+
+        rawPeople.forEach(function (entry) {
+          if (!entry || typeof entry.name !== 'string') return;
+          var name = entry.name.trim().slice(0, 40);
+          if (!name) return;
+          var key = name.toLowerCase();
+          if (seenNames[key]) return;
+          seenNames[key] = true;
+
+          var id = safeId(entry.id);
+          while (!id || seenIds[id]) id = makeId();
+          seenIds[id] = true;
+
+          people.push({ id: id, name: name });
+        });
+
+        var dishes = [];
+        var rawDishes = Array.isArray(raw.dishes) ? raw.dishes : [];
+
+        rawDishes.forEach(function (entry) {
+          if (!entry || typeof entry !== 'object') return;
+
+          var sharers = [];
+          if (Array.isArray(entry.sharers)) {
+            entry.sharers.forEach(function (id) {
+              if (typeof id === 'string' && seenIds[id] && sharers.indexOf(id) === -1) {
+                sharers.push(id);
+              }
+            });
+          }
+
+          var price = '';
+          if (typeof entry.price === 'string') {
+            price = entry.price;
+          } else if (typeof entry.price === 'number' && isFinite(entry.price)) {
+            price = String(entry.price);
+          }
+
+          var id = safeId(entry.id);
+          while (!id || dishes.some(function (dish) { return dish.id === id; })) id = makeId();
+
+          dishes.push({
+            id: id,
+            name: typeof entry.name === 'string' ? entry.name.slice(0, 60) : '',
+            price: price.slice(0, 24),
+            sharers: sharers
+          });
+        });
+
+        return {
+          people: people,
+          dishes: dishes,
+          taxPct: typeof raw.taxPct === 'string' ? raw.taxPct.slice(0, 12) : '',
+          tipPct: typeof raw.tipPct === 'string' ? raw.tipPct.slice(0, 12) : '',
+          tipAfterTax: raw.tipAfterTax === true
+        };
+      }
+
+      function loadState() {
+        try {
+          var stored = localStorage.getItem(STORAGE_KEY);
+          if (!stored) return null;
+          var parsed = JSON.parse(stored);
+          if (!parsed || typeof parsed !== 'object') return null;
+          return normalizeState(parsed);
+        } catch (err) {
+          return null;
+        }
+      }
+
+      els.personForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var name = els.personName.value.trim();
+        if (!name) {
+          showPersonError('Enter a name first.');
+          els.personName.focus();
+          return;
+        }
+
+        var lower = name.toLowerCase();
+        var duplicate = state.people.some(function (person) {
+          return person.name.toLowerCase() === lower;
+        });
+        if (duplicate) {
+          showPersonError('\u201C' + name + '\u201D is already on the list.');
+          els.personName.focus();
+          return;
+        }
+
+        state.people.push({ id: makeId(), name: name.slice(0, 40) });
+        els.personName.value = '';
+        clearPersonError();
+        save();
+        renderAll();
+        els.personName.focus();
+      });
+
+      document.addEventListener('click', function (event) {
+        var target = event.target;
+        if (!target || !target.closest) return;
+
+        var button = target.closest('[data-action]');
+        if (!button) return;
+
+        var action = button.getAttribute('data-action');
+        var id = button.getAttribute('data-id');
+
+        if (action === 'add-dish') {
+          state.dishes.push({
+            id: makeId(),
+            name: '',
+            price: '',
+            sharers: state.people.map(function (person) { return person.id; })
+          });
+          save();
+          renderDishes();
+          renderResults();
+          return;
+        }
+
+        if (action === 'remove-dish') {
+          state.dishes = state.dishes.filter(function (dish) { return dish.id !== id; });
+          save();
+          renderDishes();
+          renderResults();
+          return;
+        }
+
+        if (action === 'remove-person') {
+          state.people = state.people.filter(function (person) { return person.id !== id; });
+          state.dishes.forEach(function (dish) {
+            dish.sharers = dish.sharers.filter(function (sharer) { return sharer !== id; });
+          });
+          save();
+          renderAll();
+          return;
+        }
+
+        if (action === 'set-tip') {
+          var tip = button.getAttribute('data-tip') || '';
+          state.tipPct = tip;
+          els.tipPct.value = tip;
+          save();
+          renderResults();
+          renderTipButtons();
+          return;
+        }
+
+        if (action === 'new-bill') {
+          if (!window.confirm('Start a new bill? This clears everyone, every dish, and the tax and tip.')) return;
+          state = {
+            people: [],
+            dishes: [],
+            taxPct: '',
+            tipPct: '',
+            tipAfterTax: false
+          };
+          els.personName.value = '';
+          els.taxPct.value = '';
+          els.tipPct.value = '';
+          els.tipAfterTax.checked = false;
+          clearPersonError();
+          save();
+          renderAll();
+        }
+      });
+
+      document.addEventListener('change', function (event) {
+        var target = event.target;
+        if (!target) return;
+
+        if (target.matches('[data-sharer]')) {
+          var dish = findDish(target.getAttribute('data-dish-id'));
+          if (!dish) return;
+          var personId = target.value;
+
+          if (target.checked) {
+            if (dish.sharers.indexOf(personId) === -1) dish.sharers.push(personId);
+          } else {
+            dish.sharers = dish.sharers.filter(function (sharer) { return sharer !== personId; });
+          }
+
+          save();
+          updateDishWarning(dish);
+          renderResults();
+          return;
+        }
+
+        if (target.id === 'tipAfterTax') {
+          state.tipAfterTax = target.checked;
+          save();
+          renderTipNote();
+          renderResults();
+        }
+      });
+
+      document.addEventListener('input', function (event) {
+        var target = event.target;
+        if (!target) return;
+
+        if (target.id === 'person-name') {
+          if (!els.personError.hidden) clearPersonError();
+          return;
+        }
+
+        var dishId = target.getAttribute('data-dish-name');
+        if (dishId) {
+          var namedDish = findDish(dishId);
+          if (!namedDish) return;
+          namedDish.name = target.value.slice(0, 60);
+          save();
+          renderResults();
+          return;
+        }
+
+        dishId = target.getAttribute('data-dish-price');
+        if (dishId) {
+          var pricedDish = findDish(dishId);
+          if (!pricedDish) return;
+          pricedDish.price = target.value.slice(0, 24);
+          save();
+          renderResults();
+          return;
+        }
+
+        if (target.id === 'taxPct') {
+          state.taxPct = target.value.slice(0, 12);
+          save();
+          renderResults();
+          return;
+        }
+
+        if (target.id === 'tipPct') {
+          state.tipPct = target.value.slice(0, 12);
+          save();
+          renderResults();
+          renderTipButtons();
+        }
+      });
+
+      var saved = loadState();
+      if (saved) state = saved;
+
+      els.taxPct.value = state.taxPct;
+      els.tipPct.value = state.tipPct;
+      els.tipAfterTax.checked = state.tipAfterTax;
+      renderAll();
+    })();
+  </script>
+</body>
+</html>

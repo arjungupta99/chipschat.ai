@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>Split the Bill</title>
+<style>
+  :root {
+    --bg: #f4f5f3; --card: #fff; --ink: #1c1f1e; --muted: #6b716f; --line: #e2e5e3;
+    --accent: #0f766e; --accent-soft: #e0f2ef; --warn: #b45309; --warn-soft: #fef3c7; --danger: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121514; --card: #1b1f1e; --ink: #e8ebea; --muted: #9aa19f; --line: #2c3231;
+      --accent: #2dd4bf; --accent-soft: #123b36; --warn: #fbbf24; --warn-soft: #3a2e0b; --danger: #f87171;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 16px 14px 48px; }
+  header { display: flex; align-items: center; justify-content: space-between; margin: 4px 2px 14px; }
+  h1 { font-size: 22px; margin: 0; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 14px; }
+  input, select, button { font: inherit; color: inherit; }
+  input[type=text], input[type=number], input:not([type]) {
+    width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px;
+    background: var(--bg); font-size: 16px; /* 16px stops iOS zooming on focus */
+  }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  button { cursor: pointer; border: 0; border-radius: 10px; padding: 11px 14px; min-height: 44px; }
+  .primary { background: var(--accent); color: #fff; font-weight: 600; }
+  @media (prefers-color-scheme: dark) { .primary { color: #062b27; } }
+  .ghost { background: transparent; color: var(--muted); padding: 8px 10px; min-height: 36px; }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > .grow { flex: 1; min-width: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 8px 2px 0; }
+  .empty { color: var(--muted); font-size: 14px; margin: 4px 2px; }
+
+  .people { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .person { display: inline-flex; align-items: center; background: var(--accent-soft); border-radius: 999px; padding: 4px 4px 4px 12px; }
+  .person button { background: transparent; color: var(--muted); min-height: 32px; padding: 4px 10px; font-size: 18px; line-height: 1; }
+
+  .dish { border-top: 1px solid var(--line); padding: 12px 0; }
+  .dish:first-of-type { border-top: 0; padding-top: 2px; }
+  .dish .name { flex: 1.6; }
+  .dish .price { flex: 1; }
+  .money { position: relative; }
+  .money::before { content: "$"; position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .money input { padding-left: 24px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip { background: var(--bg); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 12px; min-height: 36px; font-size: 15px; }
+  .chip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  @media (prefers-color-scheme: dark) { .chip[aria-pressed=true] { color: #062b27; } }
+  .chip.all { border-style: dashed; }
+  .dish-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 14px; color: var(--muted); }
+  .dish-meta .warn { color: var(--warn); }
+  .remove { color: var(--danger); }
+
+  .extra { display: grid; grid-template-columns: 52px 1fr 92px; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .extra label { font-weight: 600; }
+  .extra select { padding: 10px 6px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); min-height: 44px; }
+  .quick { display: flex; gap: 6px; margin: -2px 0 6px 60px; flex-wrap: wrap; }
+  .quick button { background: var(--bg); border: 1px solid var(--line); padding: 4px 12px; min-height: 34px; font-size: 14px; }
+
+  .warnbox { background: var(--warn-soft); color: var(--warn); border-radius: 10px; padding: 10px 12px; font-size: 14px; margin-bottom: 10px; }
+  .owe { border-top: 1px solid var(--line); padding: 10px 0; }
+  .owe:first-of-type { border-top: 0; }
+  .owe summary { display: flex; justify-content: space-between; align-items: baseline; cursor: pointer; list-style: none; font-size: 18px; }
+  .owe summary::-webkit-details-marker { display: none; }
+  .owe summary strong { font-variant-numeric: tabular-nums; font-size: 20px; }
+  .owe .lines { margin: 8px 0 2px; font-size: 14px; color: var(--muted); }
+  .owe .lines div { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; font-variant-numeric: tabular-nums; }
+  .totals { border-top: 2px solid var(--line); margin-top: 6px; padding-top: 10px; font-variant-numeric: tabular-nums; }
+  .totals div { display: flex; justify-content: space-between; padding: 2px 0; color: var(--muted); }
+  .totals .grand { color: var(--ink); font-weight: 700; font-size: 18px; padding-top: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Split the Bill</h1>
+    <button class="ghost" id="reset" type="button">Start over</button>
+  </header>
+
+  <section>
+    <h2>Who came</h2>
+    <form class="row" id="person-form" autocomplete="off">
+      <input class="grow" id="person-name" type="text" placeholder="Name" enterkeyhint="done" aria-label="Person's name">
+      <button class="primary" type="submit">Add</button>
+    </form>
+    <div class="people" id="people"></div>
+  </section>
+
+  <section>
+    <h2>Dishes</h2>
+    <div id="dishes"></div>
+    <button class="primary" id="add-dish" type="button" style="width:100%;margin-top:6px">+ Add dish</button>
+    <p class="hint">Tap names to choose who shared each dish. The price is split evenly between them.</p>
+  </section>
+
+  <section>
+    <h2>Tax &amp; tip</h2>
+    <div class="extra">
+      <label for="tax">Tax</label>
+      <input id="tax" type="number" inputmode="decimal" min="0" step="any" placeholder="0">
+      <select id="tax-mode" aria-label="Tax as percent or amount"><option value="pct">%</option><option value="amt">$ total</option></select>
+    </div>
+    <div class="extra">
+      <label for="tip">Tip</label>
+      <input id="tip" type="number" inputmode="decimal" min="0" step="any" placeholder="0">
+      <select id="tip-mode" aria-label="Tip as percent or amount"><option value="pct">%</option><option value="amt">$ total</option></select>
+    </div>
+    <div class="quick" id="tip-quick">
+      <button type="button" data-tip="15">15%</button>
+      <button type="button" data-tip="18">18%</button>
+      <button type="button" data-tip="20">20%</button>
+      <button type="button" data-tip="22">22%</button>
+    </div>
+    <p class="hint">Percentages are of the food subtotal. Each person pays tax and tip in proportion to what they ate.</p>
+  </section>
+
+  <section>
+    <h2>Who owes what</h2>
+    <div id="results"></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "split-the-bill-v1";
+  var state = load();
+  var nextId = state.nextId || 1;
+
+  function load() {
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY));
+      if (s && Array.isArray(s.people) && Array.isArray(s.dishes)) return s;
+    } catch (e) {}
+    return { people: [], dishes: [], tax: "", taxMode: "pct", tip: "", tipMode: "pct", nextId: 1 };
+  }
+  function save() {
+    state.nextId = nextId;
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  // ---- money helpers (everything is done in whole cents) ----
+  function toCents(v) {
+    var n = parseFloat(String(v).replace(/[^0-9.\-]/g, ""));
+    return isFinite(n) && n > 0 ? Math.round(n * 100) : 0;
+  }
+  function fmt(c) {
+    var neg = c < 0; c = Math.abs(c);
+    return (neg ? "-$" : "$") + Math.floor(c / 100).toLocaleString() + "." + String(c % 100).padStart(2, "0");
+  }
+  // Split `total` cents among weights so the parts are whole cents and add up exactly
+  // (largest-remainder method; ties go to the earlier entry).
+  function allocate(total, weights) {
+    var sum = weights.reduce(function (a, b) { return a + b; }, 0);
+    if (!sum) return weights.map(function () { return 0; });
+    var parts = weights.map(function (w) { return Math.floor(total * w / sum); });
+    var left = total - parts.reduce(function (a, b) { return a + b; }, 0);
+    var order = weights.map(function (w, i) { return { i: i, r: total * w / sum - parts[i] }; })
+      .sort(function (a, b) { return b.r - a.r || a.i - b.i; });
+    for (var k = 0; k < left; k++) parts[order[k % order.length].i]++;
+    return parts;
+  }
+
+  function compute() {
+    var ids = state.people.map(function (p) { return p.id; });
+    var food = {}; ids.forEach(function (id) { food[id] = 0; });
+    var items = {}; ids.forEach(function (id) { items[id] = []; });
+    var subtotal = 0, unassigned = 0;
+
+    state.dishes.forEach(function (d) {
+      var price = toCents(d.price);
+      var sharers = d.shared.filter(function (id) { return id in food; });
+      if (!price) return;
+      if (!sharers.length) { unassigned += price; return; }
+      subtotal += price;
+      var parts = allocate(price, sharers.map(function () { return 1; }));
+      sharers.forEach(function (id, i) {
+        food[id] += parts[i];
+        items[id].push({ name: d.name || "Dish", share: parts[i], n: sharers.length });
+      });
+    });
+
+    var taxVal = parseFloat(state.tax) || 0, tipVal = parseFloat(state.tip) || 0;
+    var tax = state.taxMode === "pct" ? Math.round(subtotal * Math.max(0, taxVal) / 100) : toCents(state.tax);
+    var tip = state.tipMode === "pct" ? Math.round(subtotal * Math.max(0, tipVal) / 100) : toCents(state.tip);
+    var weights = ids.map(function (id) { return food[id]; });
+    var taxParts = allocate(tax, weights), tipParts = allocate(tip, weights);
+
+    var people = state.people.map(function (p, i) {
+      return { id: p.id, name: p.name, food: food[p.id], tax: taxParts[i], tip: tipParts[i],
+               total: food[p.id] + taxParts[i] + tipParts[i], items: items[p.id] };
+    });
+    return { people: people, subtotal: subtotal, tax: tax, tip: tip, total: subtotal + tax + tip, unassigned: unassigned };
+  }
+
+  // ---- rendering ----
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    for (var k in attrs || {}) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+    return n;
+  }
+  var $ = function (id) { return document.getElementById(id); };
+
+  function renderPeople() {
+    var box = $("people"); box.textContent = "";
+    if (!state.people.length) { box.appendChild(el("p", { "class": "empty", text: "No one yet. Add everyone at the table." })); return; }
+    state.people.forEach(function (p) {
+      box.appendChild(el("span", { "class": "person" }, [
+        document.createTextNode(p.name),
+        el("button", { type: "button", "aria-label": "Remove " + p.name, text: "×", onclick: function () {
+          state.people = state.people.filter(function (x) { return x.id !== p.id; });
+          state.dishes.forEach(function (d) { d.shared = d.shared.filter(function (id) { return id !== p.id; }); });
+          renderAll();
+        } })
+      ]));
+    });
+  }
+
+  function renderDishes(focusId) {
+    var box = $("dishes"); box.textContent = "";
+    if (!state.dishes.length) box.appendChild(el("p", { "class": "empty", text: "No dishes yet." }));
+    state.dishes.forEach(function (d) {
+      var name = el("input", { type: "text", value: d.name, placeholder: "Dish", "aria-label": "Dish name", enterkeyhint: "next" });
+      name.addEventListener("input", function () { d.name = name.value; update(); });
+      var price = el("input", { type: "number", inputmode: "decimal", min: "0", step: "any", value: d.price, placeholder: "0.00", "aria-label": "Price" });
+      price.addEventListener("input", function () { d.price = price.value; update(); meta(); });
+
+      var chips = el("div", { "class": "chips" });
+      var note = el("span");
+      function meta() {
+        var n = d.shared.length, c = toCents(d.price);
+        note.className = n ? "" : "warn";
+        note.textContent = !state.people.length ? "Add people above first"
+          : !n ? "Nobody picked — not counted yet"
+          : n === 1 ? "1 person"
+          : n + " people · " + (c % n ? "about " : "") + fmt(Math.round(c / n)) + " each";
+      }
+      function drawChips() {
+        chips.textContent = "";
+        state.people.forEach(function (p) {
+          var on = d.shared.indexOf(p.id) >= 0;
+          chips.appendChild(el("button", { type: "button", "class": "chip", "aria-pressed": String(on), text: p.name, onclick: function () {
+            d.shared = on ? d.shared.filter(function (id) { return id !== p.id; }) : d.shared.concat(p.id);
+            drawChips(); meta(); update();
+          } }));
+        });
+        if (state.people.length > 1) {
+          var all = d.shared.length === state.people.length;
+          chips.appendChild(el("button", { type: "button", "class": "chip all", text: all ? "Clear" : "Everyone", onclick: function () {
+            d.shared = all ? [] : state.people.map(function (p) { return p.id; });
+            drawChips(); meta(); update();
+          } }));
+        }
+      }
+      drawChips(); meta();
+
+      box.appendChild(el("div", { "class": "dish" }, [
+        el("div", { "class": "row" }, [
+          el("div", { "class": "name" }, [name]),
+          el("div", { "class": "price money" }, [price])
+        ]),
+        chips,
+        el("div", { "class": "dish-meta" }, [note,
+          el("button", { type: "button", "class": "ghost remove", text: "Remove", onclick: function () {
+            state.dishes = state.dishes.filter(function (x) { return x !== d; });
+            renderAll();
+          } })
+        ])
+      ]));
+      if (d.id === focusId) setTimeout(function () { name.focus(); }, 0);
+    });
+  }
+
+  function line(label, value) { return el("div", {}, [el("span", { text: label }), el("span", { text: value })]); }
+
+  function renderResults() {
+    var r = compute(), box = $("results"); box.textContent = "";
+    if (r.unassigned) box.appendChild(el("div", { "class": "warnbox", text: fmt(r.unassigned) + " of dishes have nobody picked and aren't in anyone's total yet." }));
+    if (!state.people.length || !r.subtotal) {
+      box.appendChild(el("p", { "class": "empty", text: "Add people and dishes to see the split." }));
+      return;
+    }
+    r.people.forEach(function (p) {
+      var lines = el("div", { "class": "lines" });
+      if (!p.items.length) lines.appendChild(el("div", { text: "Didn't share any dishes" }));
+      p.items.forEach(function (it) { lines.appendChild(line(it.name + (it.n > 1 ? " (1/" + it.n + ")" : ""), fmt(it.share))); });
+      if (p.tax) lines.appendChild(line("Tax", fmt(p.tax)));
+      if (p.tip) lines.appendChild(line("Tip", fmt(p.tip)));
+      box.appendChild(el("details", { "class": "owe" }, [
+        el("summary", {}, [el("span", { text: p.name }), el("strong", { text: fmt(p.total) })]),
+        lines
+      ]));
+    });
+    box.appendChild(el("div", { "class": "totals" }, [
+      line("Food", fmt(r.subtotal)),
+      line("Tax", fmt(r.tax)),
+      line("Tip", fmt(r.tip)),
+      el("div", { "class": "grand" }, [el("span", { text: "Total" }), el("span", { text: fmt(r.total) })])
+    ]));
+    box.appendChild(el("p", { "class": "hint", text: "Tap a name to see their items." }));
+  }
+
+  function update() { save(); renderResults(); }
+  function renderAll(focusId) { renderPeople(); renderDishes(focusId); update(); }
+
+  // ---- inputs ----
+  $("person-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var input = $("person-name"), name = input.value.trim();
+    if (!name) return;
+    var p = { id: nextId++, name: name };
+    state.people.push(p);
+    input.value = "";
+    input.focus();
+    renderAll();
+  });
+  $("add-dish").addEventListener("click", function () {
+    var d = { id: nextId++, name: "", price: "", shared: [] };
+    state.dishes.push(d);
+    renderAll(d.id);
+  });
+  ["tax", "tip"].forEach(function (k) {
+    var input = $(k), mode = $(k + "-mode");
+    input.value = state[k]; mode.value = state[k + "Mode"];
+    input.addEventListener("input", function () { state[k] = input.value; update(); });
+    mode.addEventListener("change", function () { state[k + "Mode"] = mode.value; update(); });
+  });
+  $("tip-quick").addEventListener("click", function (e) {
+    var v = e.target.getAttribute("data-tip");
+    if (!v) return;
+    state.tip = v; state.tipMode = "pct";
+    $("tip").value = v; $("tip-mode").value = "pct";
+    update();
+  });
+  $("reset").addEventListener("click", function () {
+    if (!confirm("Clear everyone and every dish?")) return;
+    state = { people: [], dishes: [], tax: "", taxMode: "pct", tip: "", tipMode: "pct" };
+    nextId = 1;
+    ["tax", "tip"].forEach(function (k) { $(k).value = ""; $(k + "-mode").value = "pct"; });
+    renderAll();
+  });
+
+  renderAll();
+  window.__split = { compute: compute, allocate: allocate, state: function () { return state; } };
+})();
+</script>
+</body>
+</html>

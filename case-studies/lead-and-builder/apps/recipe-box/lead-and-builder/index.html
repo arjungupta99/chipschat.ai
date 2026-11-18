@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A small recipe box: save recipes, scale servings and build a shopping list.">
+  <title>Recipe Box</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="#/">Recipe Box</a>
+    <input id="search" class="search" type="search" placeholder="Search recipes" aria-label="Search recipes" autocomplete="off" hidden>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <nav id="bottom-bar" class="bottom-bar" aria-live="polite" hidden></nav>
+
+  <script src="quantity.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
