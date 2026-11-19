@@ -1,6 +1,6 @@
 {
   "format": 1,
-  "signed": "2026-11-19T09:23:59.573Z",
+  "signed": "2026-11-19T16:29:11.791Z",
   "packages": {
     "@chipschat/openclaw": {
       "releases": [
@@ -110,6 +110,11 @@
     "@chipschat/acp": {
       "releases": [
         {
+          "version": "1.0.34",
+          "integrity": "sha512-ZZCOtPYT2RAzWZm47bYqCvOfRnDXD44XkrBfW73QxtDNyXtN+37zGEE8Az9sK4yb3mt78ISljVKnNGuFxPL85g==",
+          "published": "2026-11-19T16:28:06.461Z"
+        },
+        {
           "version": "1.0.33",
           "integrity": "sha512-yqQ0EZjT5GwMBZS3GK9Y/oPyRyt0Wy4qvNCLXOFmx+9lhK+sSco8qOjk2tk2zGavbVdWSeP55F+1oEqLtfgpuA==",
           "published": "2026-11-19T09:15:47.213Z"
@@ -203,11 +208,6 @@
           "version": "1.0.15",
           "integrity": "sha512-x1bsutMripIqzbCy81m8c0lWzYNipDrmEk7ZfT3hUPMIUyVmbn3Qi6pdomJ9vRBkL+SHAymgC2K81NTyu/sOvw==",
           "published": "2026-11-07T19:38:42.858Z"
-        },
-        {
-          "version": "1.0.14",
-          "integrity": "sha512-O6p/R4Dg4ZtvgIkCB/xLv3zLRnZXKVjpHXc5ZfAFslPeKtb6kANP0ivKv2/Az6Y63w2f8uNW7uD4pPQEaRn3gw==",
-          "published": "2026-11-07T19:30:09.801Z"
         }
       ],
       "withdrawn": []
