@@ -161,6 +161,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 - [person.removed](https://chipschat.ai/reference/events/person-removed/): A person was removed from the workspace, or deleted their account: signed out everywhere, out of every room, and the harnesses they owned handed on. What they said stays, under their name.
 - [person.renamed](https://chipschat.ai/reference/events/person-renamed/): A person changed the name they go by. What they said stays theirs, under the new name; an @ of the old one reaches nobody.
 - [policy.updated](https://chipschat.ai/reference/events/policy-updated/): The autonomy level or the rules changed. Takes effect on the next action, not retroactively.
+- [policy.workspace_updated](https://chipschat.ai/reference/events/policy-workspace_updated/): An owner or an admin set the rules for every harness, or turned every harness's asks off for a while (ADR 0299).
 - [project.changed](https://chipschat.ai/reference/events/project-changed/): Somebody's push moved the room's project forward: who, which commits, and the files they changed.
 - [question.answered](https://chipschat.ai/reference/events/question-answered/): The chosen options or free text, or a note that the timeout passed.
 - [question.ask](https://chipschat.ai/reference/events/question-ask/): One to four questions with tappable options, a default, and a timeout.
