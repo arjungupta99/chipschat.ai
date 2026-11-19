@@ -1,9 +1,14 @@
 {
   "format": 1,
-  "signed": "2026-11-19T08:19:31.024Z",
+  "signed": "2026-11-19T08:59:59.355Z",
   "packages": {
     "@chipschat/openclaw": {
       "releases": [
+        {
+          "version": "1.0.22",
+          "integrity": "sha512-jYbKbbp1U/GMJ1KXDWHEno8p4+G4efuqhOLEnNoEQ+LS/pcuz+cSLKMOaIjLSxkNyw7KdP8zt5HYKJlMWuPsLw==",
+          "published": "2026-11-19T08:57:00.016Z"
+        },
         {
           "version": "1.0.21",
           "integrity": "sha512-gqgQIidij9nFhW2owfUQr9AH6TDJIAXQ4N3l9SGujL99QbkxJBYEm6L7vt39aQ9MHarmgQ1YLhsIWsY5FCAldA==",
@@ -98,17 +103,17 @@
           "version": "1.0.3",
           "integrity": "sha512-NioYhlBVqjvYjsNyr/dRRJepcmrtl+Y9M+LhjZGyIRiSAQ2YBO4gX1jdjWiT+KVutsjxVBoiiQ9guQIW0YnCpQ==",
           "published": "2026-10-26T07:33:01.580Z"
-        },
-        {
-          "version": "1.0.2",
-          "integrity": "sha512-CpBS0+Eb0r3waMURG1zwUQumzvojio1h1822eeg/WJdvt20PCC3hfnxvrsZ+kzgBOGcbZ7wUXgqFXgJZ9NDWYg==",
-          "published": "2026-10-26T07:00:35.962Z"
         }
       ],
       "withdrawn": []
     },
     "@chipschat/acp": {
       "releases": [
+        {
+          "version": "1.0.32",
+          "integrity": "sha512-wNIEaCBUMB1QurSPRjWgrne4GQf73gS+MmGQQxa+pFTggrAfhmdR0PZ8fBFwRD8J4PQRmA7gjf1fFkN3cCnieQ==",
+          "published": "2026-11-19T08:52:23.843Z"
+        },
         {
           "version": "1.0.31",
           "integrity": "sha512-zMeQShH6MKWTFN3wy5UeZQ6d/OF/RdKNXmlSMw1K7TwNFxkfPFPMwdY3EcP7XaiPv9WKh4QqCjBnSFZvwM/YWA==",
@@ -203,17 +208,17 @@
           "version": "1.0.13",
           "integrity": "sha512-kPvK6a5JgSADeASsdvZgBQe4ay9bQD5G/oxPS1DuIliayj9qpc0m2M4ObVXH7FyouKYc5dikkMasf1Dd4EPYjg==",
           "published": "2026-11-07T19:16:51.235Z"
-        },
-        {
-          "version": "1.0.12",
-          "integrity": "sha512-E09GIWpYUIEDp/TaEhGOVWvRHVqTsIU2ESLKSlwXRkICeneGjx1AmBOa++t6QxVdpuTAsq5x0X9irlGMmoSciw==",
-          "published": "2026-11-06T03:23:30.108Z"
         }
       ],
       "withdrawn": []
     },
     "@chipschat/hermes": {
       "releases": [
+        {
+          "version": "1.0.35",
+          "integrity": "sha512-BRqxBnLadXf93rLS6UKbF9ojQvM1TpOiKsHghUGDlxCDOPfOfqpRCQ8qoyqyUjzlFBK0+Q00O6qEY/Dt3+q3sA==",
+          "published": "2026-11-19T08:54:18.035Z"
+        },
         {
           "version": "1.0.34",
           "integrity": "sha512-V28atkvltY2JZlK6L8OI/FqttsDc7MyYEtN+cj1y/Vxjr9tP1e0oef3cJms+PPQYpqlbhV/+VwdmLSrPXzr8Tw==",
@@ -308,17 +313,17 @@
           "version": "1.0.16",
           "integrity": "sha512-kYEoDKWPshPmjHyTg0aol/bbCeFK5w9C5WGkcyzY/DQScbxOEJWD4I8GY75g48MtD55Cp7godLQvp4onsDpFqQ==",
           "published": "2026-11-06T03:25:37.825Z"
-        },
-        {
-          "version": "1.0.15",
-          "integrity": "sha512-KAxBG3N6xK88rRe25fXAPWtSLV5QUet8ZRDdo/rHXXLvvesDEBHveMjn11m1SVO1pyMpo4hQm5doXTl11wWCuw==",
-          "published": "2026-11-03T09:01:01.709Z"
         }
       ],
       "withdrawn": []
     },
     "@chipschat/opencode": {
       "releases": [
+        {
+          "version": "1.0.35",
+          "integrity": "sha512-HLluTfm3utE+ZNpPXhQHg803eoDTXnqbiegq3nan8vdje8ZWi9Kc0VKWWCAWMWeXjKb2b7lonUdL9fmiy45+4w==",
+          "published": "2026-11-19T08:52:35.586Z"
+        },
         {
           "version": "1.0.34",
           "integrity": "sha512-k2LTnW1JXnv/rrwv9wJSWW6x9GMmo4h4zRUkDZw0UW0ZjduyW89sV4i7Bd0XfeUqNidXd/CpjOkBRm9jH6eXHQ==",
@@ -413,11 +418,6 @@
           "version": "1.0.16",
           "integrity": "sha512-yUV+8SW/+JJ+dB6im8FYjLBQfAxFm/BKioR2YwzWLqmvfZfDF9qEa3JS9JTdM+qoSSu72BsO/kOibQ0t0iH71Q==",
           "published": "2026-11-07T19:31:34.418Z"
-        },
-        {
-          "version": "1.0.15",
-          "integrity": "sha512-gMRsozQZbIMFVmwTzgkeaYLu+kEtjDpbnufezxagDBRQQ9d7+4oeIR1YTxhi1osF/b8hAk7dM32U/pgCXqGvjQ==",
-          "published": "2026-11-07T19:17:25.785Z"
         }
       ],
       "withdrawn": []
