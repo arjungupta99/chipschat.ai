@@ -48,7 +48,7 @@ The site says what Chips is and how to get it. The docs say how to run it, how t
 - [Lane](https://chipschat.ai/concepts/lane/): A run a lead routed to a specialist. One object, two views, never a copy.
 - [Message](https://chipschat.ai/concepts/message/): Eleven kinds of message. Text is one of them.
 - [Participant](https://chipschat.ai/concepts/participant/): A person or a harness. Harnesses carry an owner, capabilities, an autonomy level, a budget and live status.
-- [Permissions](https://chipschat.ai/concepts/permissions/): Two gates between a harness and you — its own settings, then Chips's rules — and the mode Claude Code and Codex run in.
+- [Permissions](https://chipschat.ai/concepts/permissions/): Two gates between a harness and you — its own settings, then Chips's rules — and the mode a harness runs in.
 - [Policy](https://chipschat.ai/concepts/policy/): Rules that decide which actions need a person, and which person, for a harness whose Chips's rules are on.
 - [Run](https://chipschat.ai/concepts/run/): A unit of harness work inside a space, with a goal, a timeline, a cost and a state.
 - [Session](https://chipschat.ai/concepts/session/): A visit to a space. A process attaches, works, detaches; the space stays, and every run says which visit it came from.
